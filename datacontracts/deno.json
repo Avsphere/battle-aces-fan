@@ -1,0 +1,6 @@
+{
+    "name": "@battle-aces-fan/datacontracts",
+    "version": "0.1.0",
+    "exports": "./mod.ts",
+    "license": "MIT"
+  }

@@ -1,0 +1,16 @@
+/src/
+/esm/main_test.js
+/esm/main_test.d.ts
+/script/main_test.js
+/script/main_test.d.ts
+/esm/testDeps.js
+/esm/testDeps.d.ts
+/script/testDeps.js
+/script/testDeps.d.ts
+/esm/_dnt.test_shims.js
+/esm/_dnt.test_shims.d.ts
+/script/_dnt.test_shims.js
+/script/_dnt.test_shims.d.ts
+/test_runner.js
+yarn.lock
+pnpm-lock.yaml

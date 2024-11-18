@@ -1,0 +1,17 @@
+{
+  "workspace": ["./datacontracts", "./server", "user-clients"],
+  "tasks": {
+    "dev": "deno run --watch main.ts",
+    "start": "deno run --allow-net ./server/main.ts"
+  },
+  "imports": {
+    "@deno/dnt": "jsr:@deno/dnt@^0.41.3",
+    "@std/assert": "jsr:@std/assert@1",
+    "chalk": "npm:chalk@^5.3.0"
+  },
+  "compilerOptions": {
+    "jsx": "precompile",
+    "jsxImportSource": "hono/jsx",
+    "strict": true
+  }
+}

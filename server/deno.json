@@ -1,0 +1,14 @@
+{
+  "name": "@battle-aces-fan/server",
+  "version": "0.1.0",
+  "exports": "./mod.ts",
+  "imports": {
+    "@hono/zod-validator": "npm:@hono/zod-validator@^0.4.1",
+    "hono": "npm:hono@^4.6.10",
+    "zod": "npm:zod@^3.23.8",
+    "@std/assert": "jsr:@std/assert@1"
+  },
+  "tasks": {
+    "start": "deno run --allow-net main.ts"
+  }
+}
