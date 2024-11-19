@@ -185,6 +185,7 @@ export class DenoMonorepoPublishUtils {
         }
 
         return {
+            saveAllBuildOptions,
             updateNpmPackageDependencies,
             bumpAllVersions,
             buildTools,
