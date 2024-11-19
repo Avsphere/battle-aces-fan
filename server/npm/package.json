@@ -1,6 +1,6 @@
 {
-  "name": "@battles-aces-fan/server",
-  "version": "0.2.0",
+  "name": "@battle-aces-fan/server",
+  "version": "0.1.0",
   "description": "Yes. This is how I choose to spend my time.",
   "repository": {
     "type": "git",
@@ -23,13 +23,13 @@
     "@hono/zod-validator": "^0.4.1",
     "hono": "^4.6.10",
     "zod": "^3.23.8",
+    "@battle-aces-fan/app-context": "^0.1.0",
+    "@battle-aces-fan/repos": "^0.1.0",
     "@types/node-fetch": "^2.5.7"
   },
   "devDependencies": {
     "@types/node": "^20.9.0",
-    "picocolors": "^1.0.0",
-    "@deno/shim-deno": "~0.18.0",
-    "undici": "^6.0.0"
+    "picocolors": "^1.0.0"
   },
   "_generatedBy": "dnt@dev"
 }

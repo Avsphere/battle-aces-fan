@@ -1,6 +1,9 @@
 {
     "name": "@battle-aces-fan/datacontracts",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "exports": "./mod.ts",
-    "license": "MIT"
+    "license": "MIT",
+    "imports": {
+        "zod": "npm:zod@^3.23.8"
+    }
   }

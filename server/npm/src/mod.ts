@@ -1,1 +1,1 @@
-export type { BattleAcesFanRoutes } from './app.js'
+export type { BattleAcesFanApp } from './lib/app.js'

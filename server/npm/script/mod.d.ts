@@ -1,2 +1,2 @@
-export type { BattleAcesFanRoutes } from './app.js';
+export type { BattleAcesFanApp } from './lib/app.js';
 //# sourceMappingURL=mod.d.ts.map

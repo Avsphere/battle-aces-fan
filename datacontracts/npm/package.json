@@ -1,6 +1,6 @@
 {
-  "name": "@battles-aces-fan/datacontracts",
-  "version": "0.1.0",
+  "name": "@battle-aces-fan/datacontracts",
+  "version": "0.2.1",
   "description": "Yes. This is how I choose to spend my time.",
   "repository": {
     "type": "git",
@@ -19,6 +19,9 @@
     "test": "node test_runner.js"
   },
   "private": false,
+  "dependencies": {
+    "zod": "^3.23.8"
+  },
   "devDependencies": {
     "@types/node": "^20.9.0",
     "picocolors": "^1.0.0"

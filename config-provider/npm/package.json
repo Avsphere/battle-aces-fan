@@ -1,0 +1,30 @@
+{
+  "name": "@battle-aces-fan/config-provider",
+  "version": "0.2.0",
+  "description": "Yes. This is how I choose to spend my time.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avsphere/battle-aces-fan.git"
+  },
+  "license": "MIT",
+  "main": "./script/mod.js",
+  "module": "./esm/mod.js",
+  "exports": {
+    ".": {
+      "import": "./esm/mod.js",
+      "require": "./script/mod.js"
+    }
+  },
+  "scripts": {
+    "test": "node test_runner.js"
+  },
+  "private": false,
+  "dependencies": {
+    "@deno/shim-deno": "~0.18.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.9.0",
+    "picocolors": "^1.0.0"
+  },
+  "_generatedBy": "dnt@dev"
+}
