@@ -1,10 +1,10 @@
 {
-    "name": "@battle-aces-fan/config-provider",
-    "version": "0.2.1",
-    "exports": "./mod.ts",
-    "license": "MIT",
-    "imports": {
-        "@std/dotenv": "jsr:@std/dotenv@^0.225.2",
-        "zod": "npm:zod@^3.23.8"
-    }
+  "name": "@battle-aces-fan/config-provider",
+  "version": "0.2.16",
+  "exports": "./mod.ts",
+  "license": "MIT",
+  "imports": {
+    "@std/dotenv": "jsr:@std/dotenv@^0.225.2",
+    "zod": "npm:zod@^3.23.8"
   }
+}

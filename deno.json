@@ -1,5 +1,5 @@
 {
-  "workspace": ["./datacontracts", "config-provider", "app-context", "repos", "./server", "./user-clients", "./db"],
+  "workspace": ["./datacontracts", "config-provider", "./db", "app-context", "repos", "./server", "./user-clients" ],
   "tasks": {
     "dev": "deno run --watch main.ts",
     "start": "deno run --allow-net ./server/main.ts"

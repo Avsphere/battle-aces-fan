@@ -5,7 +5,6 @@ import "./deps/jsr.io/@std/dotenv/0.225.2/load.js";
 export const ConfigProvider = {
     get config() {
         const mongoConnectionString = dntShim.Deno.env.get("MONGO_CONNECTION_STRING")
-
         assert(mongoConnectionString, "MONGO_CONNECTION_STRING is required")
 
         return {

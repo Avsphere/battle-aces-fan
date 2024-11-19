@@ -1,2 +1,2 @@
-export * from './models/lib/UserModel.js'
-export * from './models/Models.js'
+export * from './lib/models/lib/UserModel.js'
+export * from './lib/models/Models.js'

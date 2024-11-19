@@ -50,6 +50,7 @@ export class DenoMonorepoPublishUtils {
         const buildOptionsUpdater = this.createBuildOptionsUpdater(
             buildNpmOptions,
             buildNpmOptionsPath,
+            modulePath,
         );
 
         const moduleDenoJsonPath = resolve(modulePath, "deno.json");
@@ -140,7 +141,7 @@ export class DenoMonorepoPublishUtils {
                     );
                     // Extract package name and version if specified
                     const [packageName, version] = npmPackage.split("@");
-                    npmDependencies[packageName] = version || "*";
+                    npmDependencies[importKey] = version || "*";
                 }
             }
 
@@ -182,7 +183,7 @@ export class DenoMonorepoPublishUtils {
             for (const module of buildTools) {
                 await module.buildOptionsUpdater.saveBuildOptionsToFile();
             }
-        }
+        };
 
         return {
             saveAllBuildOptions,
@@ -201,6 +202,7 @@ export class DenoMonorepoPublishUtils {
     createBuildOptionsUpdater = (
         buildNpmOptions: BuildOptions,
         buildNpmOptionsPath: string,
+        modulePath: string,
     ) => {
         return {
             getPackageName: () => buildNpmOptions.package?.name || "",
@@ -234,7 +236,7 @@ export class DenoMonorepoPublishUtils {
             },
             saveBuildOptionsToFile: async () => {
                 // Serialize the build options back to TypeScript code
-                const optionsCode = `export const buildOptions = ${
+                const optionsCode = `import { BuildOptions } from "@deno/dnt";\nexport const buildOptions : BuildOptions = ${
                     JSON.stringify(
                         buildNpmOptions,
                         null,
@@ -243,6 +245,45 @@ export class DenoMonorepoPublishUtils {
                 };\n`;
 
                 await Deno.writeTextFile(buildNpmOptionsPath, optionsCode);
+            },
+            publishModulePublic: async () => {
+                // Run "deno run -A scripts/build_npm.ts" in the module directory
+                const denoBuildCommand = new Deno.Command("deno", {
+                    args: ["run", "-A", "scripts/build_npm.ts"],
+                    cwd: modulePath,
+                    stdout: "inherit",
+                    stderr: "inherit",
+                });
+
+                const denoBuildResult = await denoBuildCommand.output();
+                if (denoBuildResult.code !== 0) {
+                    throw new Error(
+                        `Failed to build module: ${
+                            new TextDecoder().decode(
+                                denoBuildResult.stderr,
+                            )
+                        }`,
+                    );
+                }
+
+                // Run "npm publish --access=public" in the 'npm' directory inside the module
+                const npmPublishCommand = new Deno.Command("npm", {
+                    args: ["publish", "--access=public"],
+                    cwd: resolve(modulePath, "npm"),
+                    stdout: "inherit",
+                    stderr: "inherit",
+                });
+
+                const npmPublishResult = await npmPublishCommand.output();
+                if (npmPublishResult.code !== 0) {
+                    throw new Error(
+                        `Failed to publish module: ${
+                            new TextDecoder().decode(
+                                npmPublishResult.stderr,
+                            )
+                        }`,
+                    );
+                }
             },
         };
     };

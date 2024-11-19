@@ -1,4 +1,5 @@
-export const buildOptions = {
+import { BuildOptions } from "@deno/dnt";
+export const buildOptions : BuildOptions = {
   "entryPoints": [
     "./mod.ts"
   ],
@@ -13,7 +14,7 @@ export const buildOptions = {
   },
   "package": {
     "name": "@battle-aces-fan/db",
-    "version": "0.2.6",
+    "version": "0.2.22",
     "description": "Yes. This is how I choose to spend my time.",
     "license": "MIT",
     "private": false,
@@ -24,8 +25,8 @@ export const buildOptions = {
     "dependencies": {
       "mongodb": "^6.10.0",
       "zod": "^3.23.8",
-      "@battle-aces-fan/datacontracts": "0.2.1",
-      "@battle-aces-fan/config-provider": "0.2.1"
+      "@battle-aces-fan/datacontracts": "0.2.16",
+      "@battle-aces-fan/config-provider": "0.2.16"
     }
   }
 };
