@@ -98,6 +98,10 @@ export type UnitSchema = z.infer<typeof UnitSchema>
 export class Unit {
     constructor(readonly data: UnitSchema) {}
 
+    static parse = (data: unknown) => {
+        return new Unit(UnitSchema.parse(data));
+    }
+
     get id() {
         return this.data._id;
     }

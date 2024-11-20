@@ -1,24 +1,31 @@
 import { z } from "zod";
 import { SmileyFaceRating } from "./SmileyFaceRating.ts";
-import { SurveyQuestionTag } from "./SurveyQuestionTag.ts";
+import { SurveyQuestionTagKind } from "./SurveyQuestionTag.ts";
+import { SurveyQuestionKind } from "./SurveyQuestion.ts";
+
+export const SurveyQuestionResponseDetails = z.object({
+    questionId : z.string(),
+    questionKind : SurveyQuestionKind,
+    userId : z.string(),
+    smileyFaceRating : SmileyFaceRating.nullable(),
+    tags : z.array(SurveyQuestionTagKind),
+    /**
+     * we count skipping as a valid answer as this is still interesting
+     */
+    skipped : z.boolean(),
+})
+export type SurveyQuestionResponseDetails = z.infer<typeof SurveyQuestionResponseDetails>
 
 export const SurveyQuestionResponseSchema = z.object({
     _id: z.string(),
     createdAt: z.number(),
     lastUpdatedAt: z.number(),
-    questionId : z.string(),
-    userId : z.string(),
-    smileyFaceRating : SmileyFaceRating.nullable(),
-    tags : z.array(SurveyQuestionTag),
-    /**
-     * we count skipping as a valid answer as this is still interesting
-     */
-    skipped : z.boolean(),
+    details : SurveyQuestionResponseDetails,
 });
 export type SurveyQuestionResponseSchema = z.infer<typeof SurveyQuestionResponseSchema>;
 
 
-export class SurveyQuestionResponse{
+export class SurveyQuestionResponse {
     constructor(readonly data: SurveyQuestionResponseSchema) {}
 
     static parse = (data: unknown) => new SurveyQuestionResponse(SurveyQuestionResponseSchema.parse(data))

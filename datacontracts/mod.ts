@@ -1,4 +1,4 @@
-export * from './schemas/QuestionTagMap.ts'
+export * from './schemas/SurveyQuestionTagMap.ts'
 export * from './schemas/SmileyFaceRating.ts'
 export * from './schemas/SurveyQuestion.ts'
 export * from './schemas/SurveyQuestionTag.ts'

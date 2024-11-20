@@ -1,18 +1,36 @@
 import { appContext, AppContext } from '@battle-aces-fan/app-context'
+import { Repos } from "../repos.ts";
+import { UserModel } from "../../../db/mod.ts";
+import { SurveyQuestionResponseModel } from "../../../db/lib/models/lib/SurveyQuestionResponseModel.ts";
 
 export class UsersRepo {
-    constructor(private readonly appContext : AppContext) {}
+    constructor(private readonly repos : Repos) {
+    }
 
-    create = async() => {}
+    create = async() => {
+        return await this.repos.appContext.models.users.create()
+    }
 
-    findById = async() => {}
+    findById = async(params : Parameters<UserModel['findById']>[0]) => {
+        return await this.repos.appContext.models.users.findById(params)
+    }
 
-    findAll = async() => {}
+    findByUsername = async(params : Parameters<UserModel['findByBattleAcesUsername']>[0]) => {
+        return await this.repos.appContext.models.users.findByBattleAcesUsername
+    }
+    findAll = async() => {
+        return await this.repos.appContext.models.users.findAll()
+    }
 
-    // create question
+    // wraps SurveyQuestionResponse model method
+    answerSurveyQuestion = async(response : Parameters<SurveyQuestionResponseModel['create']>[0]) => {
+        return await this.repos.surveyQuestions.responses.create(response)
+    }
 
-    // submit a response
+    findAllResponses = async(userId : string) => {
+        return await this.repos.appContext.models.surveyQuestionResponses.findAllByUser(userId)
+    }
 
-    static create = () => new UsersRepo(appContext)
+    static create = (repos : Repos) => new UsersRepo(repos)
 
 }
