@@ -113,36 +113,3 @@ Deno.test("can answer question", async () => {
 
   await appContext.dispose();
 });
-
-Deno.test("Hello World", async () => {
-  const app = BattleAcesFanApp.create();
-  // const grr = hc<AppType>('http://localhost/')
-
-  const client = testClient(app);
-
-  // this throws due to connection refused
-  const t = await client.author.$post({
-    json: {
-      age: 25,
-      name: "John Doe",
-      hairColor: "brown",
-    },
-  });
-
-  console.log("t", t);
-
-  // this works
-  // const postRes = await app.request('http://localhost/author', {
-  //     method: 'POST',
-  //     headers: {
-  //         'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify({
-  //         name: 'John Doe',
-  //         age: 25
-  //     })
-  // })
-
-  // // console.log('res', await getRes.text())
-  // console.log('res', await postRes.json())
-});
