@@ -8,8 +8,11 @@ const getModels = () => {
   return _models;
 };
 
-export type AppContext = typeof appContext;
-export const appContext = {
+export type AppContext = {
+  readonly models: Models;
+  readonly dispose: () => Promise<void>;
+}
+export const appContext : AppContext = {
   get models() {
     return getModels();
   },

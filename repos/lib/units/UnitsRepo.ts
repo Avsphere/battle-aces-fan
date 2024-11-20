@@ -1,5 +1,5 @@
 import { appContext, AppContext } from '@battle-aces-fan/app-context'
-import { Repos } from "../repos.ts";
+import { Repos } from "../Repos.ts";
 import { UnitModel } from "../../../db/lib/models/lib/UnitModel.ts";
 
 export class UnitsRepo {
@@ -24,6 +24,9 @@ export class UnitsRepo {
     }
 
 
+    deleteAll = async() => {
+        return await this.repos.appContext.models.units.deleteAll()
+    }
 
     static create = (repos : Repos) => new UnitsRepo(repos)
 

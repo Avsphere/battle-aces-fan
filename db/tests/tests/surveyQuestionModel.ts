@@ -12,7 +12,8 @@ Deno.test("SurveyQuestionModel tests", async (testCtx) => {
     const question = await models.surveyQuestions.create({
       details: {
         kind: "unit_single",
-        unitId: "unit123",
+        unitSlug: "advancedblink",
+        tags: [],
       },
       isActive: true,
     });
@@ -21,7 +22,7 @@ Deno.test("SurveyQuestionModel tests", async (testCtx) => {
     assertEquals(found.id, question.id);
     assert(found.kind === "unit_single");
     assert(found.details.kind === "unit_single");
-    assertEquals(found.details.unitId, "unit123");
+    assertEquals(found.details.unitSlug, "advancedblink");
   });
 
   await testCtx.step(
@@ -30,8 +31,9 @@ Deno.test("SurveyQuestionModel tests", async (testCtx) => {
       const question = await models.surveyQuestions.create({
         details: {
           kind: "unit_matchup_1v1",
-          firstUnitId: "unit1",
-          secondUnitId: "unit2",
+          firstUnitSlug: "advancedblink",
+          secondUnitSlug: "advancedblink",
+          tags: [],
         },
         isActive: true,
       });
@@ -40,8 +42,8 @@ Deno.test("SurveyQuestionModel tests", async (testCtx) => {
       assertEquals(found.id, question.id);
       assertEquals(found.kind, "unit_matchup_1v1");
       assert(found.details.kind === "unit_matchup_1v1");
-      assertEquals(found.details.firstUnitId, "unit1");
-      assertEquals(found.details.secondUnitId, "unit2");
+      assertEquals(found.details.firstUnitSlug, "advancedblink");
+      assertEquals(found.details.secondUnitSlug, "advancedblink");
     },
   );
 
@@ -50,7 +52,8 @@ Deno.test("SurveyQuestionModel tests", async (testCtx) => {
     await models.surveyQuestions.create({
       details: {
         kind: "unit_single",
-        unitId: "unit456",
+        unitSlug: "unit456",
+        tags : [],
       },
       isActive: false,
     });

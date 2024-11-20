@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Unit = exports.UnitSchema = exports.UnitDetailsSchema = void 0;
 const zod_1 = require("zod");
+const UnitSlugKind_js_1 = require("./UnitSlugKind.js");
 const UnitColorSchema = zod_1.z.object({
     hex: zod_1.z.string(),
     red: zod_1.z.number(),
@@ -54,7 +55,7 @@ const UnitLeaderboardStatsSchema = zod_1.z.object({
 exports.UnitDetailsSchema = zod_1.z.object({
     id: zod_1.z.string(),
     unitId: zod_1.z.number(),
-    slug: zod_1.z.string(),
+    slug: UnitSlugKind_js_1.UnitSlugKind,
     name: zod_1.z.string(),
     unitDescription: zod_1.z.string(),
     unitLore: zod_1.z.string(),
@@ -91,6 +92,9 @@ class Unit {
             value: data
         });
     }
+    get techTierId() {
+        return this.data.details.techTier.techTierId;
+    }
     get id() {
         return this.data._id;
     }
@@ -99,3 +103,11 @@ class Unit {
     }
 }
 exports.Unit = Unit;
+Object.defineProperty(Unit, "parse", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: (data) => {
+        return new Unit(exports.UnitSchema.parse(data));
+    }
+});

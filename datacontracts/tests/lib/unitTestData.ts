@@ -2,7 +2,7 @@ export const unitTestdata = {
     "data": [
         {
             "id": "HpUsB48_SF-QN4S5GDI9Lw",
-            "unitId": 47,
+            "unitSlug": 47,
             "slug": "bulwark",
             "name": "Bulwark",
             "unitDescription": "",
@@ -80,7 +80,7 @@ export const unitTestdata = {
         },
         {
             "id": "DWPHQd-CSIKI9b53VS8WAA",
-            "unitId": 73,
+            "unitSlug": 73,
             "slug": "butterfly",
             "name": "Butterfly",
             "unitDescription": "",
@@ -176,7 +176,7 @@ export const unitTestdata = {
         },
         {
             "id": "O-n80fF3T-u6ko-0E3778Q",
-            "unitId": 75,
+            "unitSlug": 75,
             "slug": "crab",
             "name": "Crab",
             "unitDescription": "",
@@ -250,7 +250,7 @@ export const unitTestdata = {
         },
         {
             "id": "RUSGeAtBQxG974jooQYeJQ",
-            "unitId": 76,
+            "unitSlug": 76,
             "slug": "ballista",
             "name": "Ballista",
             "unitDescription": "",
@@ -324,7 +324,7 @@ export const unitTestdata = {
         },
         {
             "id": "agR7GY9dSLm6GabxJat0Kg",
-            "unitId": 77,
+            "unitSlug": 77,
             "slug": "heavyballista",
             "name": "Heavy Ballista",
             "unitDescription": "",
@@ -416,7 +416,7 @@ export const unitTestdata = {
         },
         {
             "id": "A45KVmTaQ02QbqB_5_vXCw",
-            "unitId": 11,
+            "unitSlug": 11,
             "slug": "dragonfly",
             "name": "Dragonfly",
             "unitDescription": "",
@@ -494,7 +494,7 @@ export const unitTestdata = {
         },
         {
             "id": "Tr0Nct5KSPuL8pK_TI9jcA",
-            "unitId": 29,
+            "unitSlug": 29,
             "slug": "katbus",
             "name": "Katbus",
             "unitDescription": "",
@@ -572,7 +572,7 @@ export const unitTestdata = {
         },
         {
             "id": "B8F7gMEGSP2fbG74NSXPrg",
-            "unitId": 74,
+            "unitSlug": 74,
             "slug": "hunter",
             "name": "Hunter",
             "unitDescription": "Gets countered by ground",
@@ -646,7 +646,7 @@ export const unitTestdata = {
         },
         {
             "id": "PAYagiJSRLWnbgb-WFPnRg",
-            "unitId": 80,
+            "unitSlug": 80,
             "slug": "kingcrab",
             "name": "King Crab",
             "unitDescription": "",
@@ -738,7 +738,7 @@ export const unitTestdata = {
         },
         {
             "id": "F1Dwl4g8T0KzIVaDaVLUAg",
-            "unitId": 13,
+            "unitSlug": 13,
             "slug": "falcon",
             "name": "Falcon",
             "unitDescription": "",
@@ -816,7 +816,7 @@ export const unitTestdata = {
         },
         {
             "id": "fwxabnoWRI-267PioG29ng",
-            "unitId": 17,
+            "unitSlug": 17,
             "slug": "crusader",
             "name": "Crusader",
             "unitDescription": "",
@@ -890,7 +890,7 @@ export const unitTestdata = {
         },
         {
             "id": "TAZryT-uSgCNxGezJH9vwg",
-            "unitId": 34,
+            "unitSlug": 34,
             "slug": "recall",
             "name": "Recall",
             "unitDescription": "",
@@ -968,7 +968,7 @@ export const unitTestdata = {
         },
         {
             "id": "HONatI_jT6GKZF_cse3Yxg",
-            "unitId": 54,
+            "unitSlug": 54,
             "slug": "locust",
             "name": "Locust",
             "unitDescription": "",
@@ -1046,7 +1046,7 @@ export const unitTestdata = {
         },
         {
             "id": "H3g_hdnZR5yGjalO8n_oxA",
-            "unitId": 8,
+            "unitSlug": 8,
             "slug": "bomber",
             "name": "Bomber",
             "unitDescription": "Self destructs when it attacks",
@@ -1138,7 +1138,7 @@ export const unitTestdata = {
         },
         {
             "id": "KhST_Xn3QOqAFpVwGQqfww",
-            "unitId": 40,
+            "unitSlug": 40,
             "slug": "recallhunter",
             "name": "Recall Hunter",
             "unitDescription": "Gets countered by ground",
@@ -1216,7 +1216,7 @@ export const unitTestdata = {
         },
         {
             "id": "UXZghTI-QMm-GvgU1nr1tg",
-            "unitId": 48,
+            "unitSlug": 48,
             "slug": "kraken",
             "name": "Kraken",
             "unitDescription": "",
@@ -1294,7 +1294,7 @@ export const unitTestdata = {
         },
         {
             "id": "OzN1h-hDSYe1QxIJ6KQKTw",
-            "unitId": 86,
+            "unitSlug": 86,
             "slug": "gargantua",
             "name": "Gargantua",
             "unitDescription": "",
@@ -1368,7 +1368,7 @@ export const unitTestdata = {
         },
         {
             "id": "CPfvBTEdSf6ptUmVlaZEuQ",
-            "unitId": 14,
+            "unitSlug": 14,
             "slug": "predator",
             "name": "Predator",
             "unitDescription": "Gets countered by ground",
@@ -1442,7 +1442,7 @@ export const unitTestdata = {
         },
         {
             "id": "RkCqh57aS0qiyre8YE-vag",
-            "unitId": 27,
+            "unitSlug": 27,
             "slug": "scorpion",
             "name": "Scorpion",
             "unitDescription": "",
@@ -1516,7 +1516,7 @@ export const unitTestdata = {
         },
         {
             "id": "Vlv5bZ0QQyOFJrBvVk2Cgw",
-            "unitId": 30,
+            "unitSlug": 30,
             "slug": "valkyrie",
             "name": "Valkyrie",
             "unitDescription": "",
@@ -1594,7 +1594,7 @@ export const unitTestdata = {
         },
         {
             "id": "VULO365vQLmY2TiYaO4kGA",
-            "unitId": 41,
+            "unitSlug": 41,
             "slug": "shocker",
             "name": "Shocker",
             "unitDescription": "",
@@ -1668,7 +1668,7 @@ export const unitTestdata = {
         },
         {
             "id": "CyLkOxRDRNOX_5E1gLxcLw",
-            "unitId": 72,
+            "unitSlug": 72,
             "slug": "airship",
             "name": "Airship",
             "unitDescription": "",
@@ -1746,7 +1746,7 @@ export const unitTestdata = {
         },
         {
             "id": "N0ZaKhQCSquXbjX7YSSfPw",
-            "unitId": 24,
+            "unitSlug": 24,
             "slug": "beetle",
             "name": "Beetle",
             "unitDescription": "Gets countered by ground",
@@ -1820,7 +1820,7 @@ export const unitTestdata = {
         },
         {
             "id": "YfmSC6qlQiWFwjVhuMoc1A",
-            "unitId": 32,
+            "unitSlug": 32,
             "slug": "sniper",
             "name": "Sniper",
             "unitDescription": "",
@@ -1894,7 +1894,7 @@ export const unitTestdata = {
         },
         {
             "id": "Xuu2GfEhQjWhslC1UHLu5g",
-            "unitId": 68,
+            "unitSlug": 68,
             "slug": "recallshocker",
             "name": "Recall Shocker",
             "unitDescription": "",
@@ -1972,7 +1972,7 @@ export const unitTestdata = {
         },
         {
             "id": "fWHnmgY_QYu99gloxtVh0g",
-            "unitId": 9,
+            "unitSlug": 9,
             "slug": "mortar",
             "name": "Mortar",
             "unitDescription": "",
@@ -2050,7 +2050,7 @@ export const unitTestdata = {
         },
         {
             "id": "DDXSTx_KRZmkRmkWUjHGMA",
-            "unitId": 42,
+            "unitSlug": 42,
             "slug": "blink",
             "name": "Blink",
             "unitDescription": "",
@@ -2128,7 +2128,7 @@ export const unitTestdata = {
         },
         {
             "id": "MHL0n7tzQUaMcOme7Caeaw",
-            "unitId": 52,
+            "unitSlug": 52,
             "slug": "advancedblink",
             "name": "Advanced Blink",
             "unitDescription": "",
@@ -2224,7 +2224,7 @@ export const unitTestdata = {
         },
         {
             "id": "WVbjDzosQ6-hbRJeSCTqbA",
-            "unitId": 61,
+            "unitSlug": 61,
             "slug": "advancedrecall",
             "name": "Advanced Recall",
             "unitDescription": "",
@@ -2302,7 +2302,7 @@ export const unitTestdata = {
         },
         {
             "id": "XqEdNMnKQ-iShAiXAHUKmQ",
-            "unitId": 85,
+            "unitSlug": 85,
             "slug": "advanceddestroyer",
             "name": "Advanced Destroyer",
             "unitDescription": "",
@@ -2376,7 +2376,7 @@ export const unitTestdata = {
         },
         {
             "id": "Zdg64k1OSRGCqVSy14OBsg",
-            "unitId": 35,
+            "unitSlug": 35,
             "slug": "blinkhunter",
             "name": "Blink Hunter",
             "unitDescription": "Gets countered by ground",
@@ -2454,7 +2454,7 @@ export const unitTestdata = {
         },
         {
             "id": "LbDQmDjASHm_zbsYthy8wQ",
-            "unitId": 39,
+            "unitSlug": 39,
             "slug": "assaultbot",
             "name": "Assaultbot",
             "unitDescription": "",
@@ -2550,7 +2550,7 @@ export const unitTestdata = {
         },
         {
             "id": "An1pJ78jTlC891qMXRrTug",
-            "unitId": 49,
+            "unitSlug": 49,
             "slug": "artillery",
             "name": "Artillery",
             "unitDescription": "",
@@ -2624,7 +2624,7 @@ export const unitTestdata = {
         },
         {
             "id": "PodOXWXHSyiFRhZ_VaqgSg",
-            "unitId": 51,
+            "unitSlug": 51,
             "slug": "mammoth",
             "name": "Mammoth",
             "unitDescription": "",
@@ -2698,7 +2698,7 @@ export const unitTestdata = {
         },
         {
             "id": "NFBK78dhTaKk8MwYKBbFZA",
-            "unitId": 64,
+            "unitSlug": 64,
             "slug": "swiftshocker",
             "name": "Swift Shocker",
             "unitDescription": "",
@@ -2772,7 +2772,7 @@ export const unitTestdata = {
         },
         {
             "id": "GwaZJVWcTtqBpSG_s5MxsA",
-            "unitId": 1,
+            "unitSlug": 1,
             "slug": "gunbot",
             "name": "Gunbot",
             "unitDescription": "",
@@ -2850,7 +2850,7 @@ export const unitTestdata = {
         },
         {
             "id": "B4n9_Yn6TyqW6j2WZt71lA",
-            "unitId": 37,
+            "unitSlug": 37,
             "slug": "advancedbot",
             "name": "Advancedbot",
             "unitDescription": "",
@@ -2928,7 +2928,7 @@ export const unitTestdata = {
         },
         {
             "id": "cxUU6Wb9QTeJIVgXv5l7cg",
-            "unitId": 57,
+            "unitSlug": 57,
             "slug": "behemoth",
             "name": "Behemoth",
             "unitDescription": "",
@@ -3002,7 +3002,7 @@ export const unitTestdata = {
         },
         {
             "id": "OuQElYGjT-erhZOOuTwPQg",
-            "unitId": 70,
+            "unitSlug": 70,
             "slug": "stinger",
             "name": "Stinger",
             "unitDescription": "",
@@ -3076,7 +3076,7 @@ export const unitTestdata = {
         },
         {
             "id": "EoCPtnqWQziXoOgVjLuWew",
-            "unitId": 6,
+            "unitSlug": 6,
             "slug": "missilebot",
             "name": "Missilebot",
             "unitDescription": "Gets countered by ground",
@@ -3154,7 +3154,7 @@ export const unitTestdata = {
         },
         {
             "id": "PrQHSBGfTNyCxpTigNDUuA",
-            "unitId": 38,
+            "unitSlug": 38,
             "slug": "heavyhunter",
             "name": "Heavy Hunter",
             "unitDescription": "Gets countered by ground",
@@ -3207,7 +3207,7 @@ export const unitTestdata = {
         },
         {
             "id": "cVv0ZxWYTCaR2-XLp0s1HQ",
-            "unitId": 2,
+            "unitSlug": 2,
             "slug": "wasp",
             "name": "Wasp",
             "unitDescription": "",
@@ -3281,7 +3281,7 @@ export const unitTestdata = {
         },
         {
             "id": "Gs4mvauKTNyQskSsmOO1NA",
-            "unitId": 53,
+            "unitSlug": 53,
             "slug": "flakturret",
             "name": "Flak Turret",
             "unitDescription": "Can be placed around the Core and Resource Bases",
@@ -3338,7 +3338,7 @@ export const unitTestdata = {
         },
         {
             "id": "Rv4izl-vT4-7EBqoO5N-cg",
-            "unitId": 58,
+            "unitSlug": 58,
             "slug": "destroyer",
             "name": "Destroyer",
             "unitDescription": "",
@@ -3412,7 +3412,7 @@ export const unitTestdata = {
         },
         {
             "id": "MouP2r_1RiOGK50E146Ffw",
-            "unitId": 25,
+            "unitSlug": 25,
             "slug": "hornet",
             "name": "Hornet",
             "unitDescription": "Gets countered by ground",
@@ -3486,7 +3486,7 @@ export const unitTestdata = {
         },
         {
             "id": "NEoOAPABR0-hCVNfPccm6Q",
-            "unitId": 28,
+            "unitSlug": 28,
             "slug": "raider",
             "name": "Raider",
             "unitDescription": "Can only attack workers",
@@ -3539,7 +3539,7 @@ export const unitTestdata = {
         },
         {
             "id": "cuw4dWn2QEuPUQkO_zA-tw",
-            "unitId": 20,
+            "unitSlug": 20,
             "slug": "turret",
             "name": "Turret",
             "unitDescription": "Can be placed around the Core and Resource Bases",
@@ -3617,7 +3617,7 @@ export const unitTestdata = {
         },
         {
             "id": "EZX4PuN0QHyyXMISPNlQOQ",
-            "unitId": 83,
+            "unitSlug": 83,
             "slug": "knight",
             "name": "Knight",
             "unitDescription": "",
@@ -3691,7 +3691,7 @@ export const unitTestdata = {
         },
         {
             "id": "Fhs-FRf2R9ydlV_MNRIaCg",
-            "unitId": 84,
+            "unitSlug": 84,
             "slug": "crossbow",
             "name": "Crossbow",
             "unitDescription": "Gets countered by ground",

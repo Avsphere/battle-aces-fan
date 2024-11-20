@@ -2,7 +2,7 @@ import { z } from "zod";
 export declare const UnitDetailsSchema: z.ZodObject<{
     id: z.ZodString;
     unitId: z.ZodNumber;
-    slug: z.ZodString;
+    slug: z.ZodEnum<["bulwark", "ballista", "crab", "butterfly", "katbus", "kingcrab", "hunter", "heavyballista", "dragonfly", "recall", "bomber", "recallhunter", "kraken", "locust", "crusader", "falcon", "scorpion", "valkyrie", "airship", "beetle", "sniper", "recallshocker", "shocker", "gargantua", "predator", "advancedblink", "advancedrecall", "advanceddestroyer", "blinkhunter", "assaultbot", "artillery", "swiftshocker", "mammoth", "gunbot", "mortar", "blink", "advancedbot", "stinger", "behemoth", "missilebot", "heavyhunter", "destroyer", "hornet", "turret", "crossbow", "knight", "raider", "wasp", "flakturret"]>;
     name: z.ZodString;
     unitDescription: z.ZodString;
     unitLore: z.ZodString;
@@ -201,10 +201,10 @@ export declare const UnitDetailsSchema: z.ZodObject<{
         };
     }>;
 }, "strip", z.ZodTypeAny, {
-    unitId: number;
-    slug: string;
+    slug: "bulwark" | "ballista" | "crab" | "butterfly" | "katbus" | "kingcrab" | "hunter" | "heavyballista" | "dragonfly" | "recall" | "bomber" | "recallhunter" | "kraken" | "locust" | "crusader" | "falcon" | "scorpion" | "valkyrie" | "airship" | "beetle" | "sniper" | "recallshocker" | "shocker" | "gargantua" | "predator" | "advancedblink" | "advancedrecall" | "advanceddestroyer" | "blinkhunter" | "assaultbot" | "artillery" | "swiftshocker" | "mammoth" | "gunbot" | "mortar" | "blink" | "advancedbot" | "stinger" | "behemoth" | "missilebot" | "heavyhunter" | "destroyer" | "hornet" | "turret" | "crossbow" | "knight" | "raider" | "wasp" | "flakturret";
     name: string;
     id: string;
+    unitId: number;
     unitDescription: string;
     unitLore: string;
     techTier: {
@@ -272,10 +272,10 @@ export declare const UnitDetailsSchema: z.ZodObject<{
         };
     };
 }, {
-    unitId: number;
-    slug: string;
+    slug: "bulwark" | "ballista" | "crab" | "butterfly" | "katbus" | "kingcrab" | "hunter" | "heavyballista" | "dragonfly" | "recall" | "bomber" | "recallhunter" | "kraken" | "locust" | "crusader" | "falcon" | "scorpion" | "valkyrie" | "airship" | "beetle" | "sniper" | "recallshocker" | "shocker" | "gargantua" | "predator" | "advancedblink" | "advancedrecall" | "advanceddestroyer" | "blinkhunter" | "assaultbot" | "artillery" | "swiftshocker" | "mammoth" | "gunbot" | "mortar" | "blink" | "advancedbot" | "stinger" | "behemoth" | "missilebot" | "heavyhunter" | "destroyer" | "hornet" | "turret" | "crossbow" | "knight" | "raider" | "wasp" | "flakturret";
     name: string;
     id: string;
+    unitId: number;
     unitDescription: string;
     unitLore: string;
     techTier: {
@@ -351,7 +351,7 @@ export declare const UnitSchema: z.ZodObject<{
     details: z.ZodObject<{
         id: z.ZodString;
         unitId: z.ZodNumber;
-        slug: z.ZodString;
+        slug: z.ZodEnum<["bulwark", "ballista", "crab", "butterfly", "katbus", "kingcrab", "hunter", "heavyballista", "dragonfly", "recall", "bomber", "recallhunter", "kraken", "locust", "crusader", "falcon", "scorpion", "valkyrie", "airship", "beetle", "sniper", "recallshocker", "shocker", "gargantua", "predator", "advancedblink", "advancedrecall", "advanceddestroyer", "blinkhunter", "assaultbot", "artillery", "swiftshocker", "mammoth", "gunbot", "mortar", "blink", "advancedbot", "stinger", "behemoth", "missilebot", "heavyhunter", "destroyer", "hornet", "turret", "crossbow", "knight", "raider", "wasp", "flakturret"]>;
         name: z.ZodString;
         unitDescription: z.ZodString;
         unitLore: z.ZodString;
@@ -550,10 +550,10 @@ export declare const UnitSchema: z.ZodObject<{
             };
         }>;
     }, "strip", z.ZodTypeAny, {
-        unitId: number;
-        slug: string;
+        slug: "bulwark" | "ballista" | "crab" | "butterfly" | "katbus" | "kingcrab" | "hunter" | "heavyballista" | "dragonfly" | "recall" | "bomber" | "recallhunter" | "kraken" | "locust" | "crusader" | "falcon" | "scorpion" | "valkyrie" | "airship" | "beetle" | "sniper" | "recallshocker" | "shocker" | "gargantua" | "predator" | "advancedblink" | "advancedrecall" | "advanceddestroyer" | "blinkhunter" | "assaultbot" | "artillery" | "swiftshocker" | "mammoth" | "gunbot" | "mortar" | "blink" | "advancedbot" | "stinger" | "behemoth" | "missilebot" | "heavyhunter" | "destroyer" | "hornet" | "turret" | "crossbow" | "knight" | "raider" | "wasp" | "flakturret";
         name: string;
         id: string;
+        unitId: number;
         unitDescription: string;
         unitLore: string;
         techTier: {
@@ -621,10 +621,10 @@ export declare const UnitSchema: z.ZodObject<{
             };
         };
     }, {
-        unitId: number;
-        slug: string;
+        slug: "bulwark" | "ballista" | "crab" | "butterfly" | "katbus" | "kingcrab" | "hunter" | "heavyballista" | "dragonfly" | "recall" | "bomber" | "recallhunter" | "kraken" | "locust" | "crusader" | "falcon" | "scorpion" | "valkyrie" | "airship" | "beetle" | "sniper" | "recallshocker" | "shocker" | "gargantua" | "predator" | "advancedblink" | "advancedrecall" | "advanceddestroyer" | "blinkhunter" | "assaultbot" | "artillery" | "swiftshocker" | "mammoth" | "gunbot" | "mortar" | "blink" | "advancedbot" | "stinger" | "behemoth" | "missilebot" | "heavyhunter" | "destroyer" | "hornet" | "turret" | "crossbow" | "knight" | "raider" | "wasp" | "flakturret";
         name: string;
         id: string;
+        unitId: number;
         unitDescription: string;
         unitLore: string;
         techTier: {
@@ -697,10 +697,10 @@ export declare const UnitSchema: z.ZodObject<{
     createdAt: number;
     lastUpdatedAt: number;
     details: {
-        unitId: number;
-        slug: string;
+        slug: "bulwark" | "ballista" | "crab" | "butterfly" | "katbus" | "kingcrab" | "hunter" | "heavyballista" | "dragonfly" | "recall" | "bomber" | "recallhunter" | "kraken" | "locust" | "crusader" | "falcon" | "scorpion" | "valkyrie" | "airship" | "beetle" | "sniper" | "recallshocker" | "shocker" | "gargantua" | "predator" | "advancedblink" | "advancedrecall" | "advanceddestroyer" | "blinkhunter" | "assaultbot" | "artillery" | "swiftshocker" | "mammoth" | "gunbot" | "mortar" | "blink" | "advancedbot" | "stinger" | "behemoth" | "missilebot" | "heavyhunter" | "destroyer" | "hornet" | "turret" | "crossbow" | "knight" | "raider" | "wasp" | "flakturret";
         name: string;
         id: string;
+        unitId: number;
         unitDescription: string;
         unitLore: string;
         techTier: {
@@ -773,10 +773,10 @@ export declare const UnitSchema: z.ZodObject<{
     createdAt: number;
     lastUpdatedAt: number;
     details: {
-        unitId: number;
-        slug: string;
+        slug: "bulwark" | "ballista" | "crab" | "butterfly" | "katbus" | "kingcrab" | "hunter" | "heavyballista" | "dragonfly" | "recall" | "bomber" | "recallhunter" | "kraken" | "locust" | "crusader" | "falcon" | "scorpion" | "valkyrie" | "airship" | "beetle" | "sniper" | "recallshocker" | "shocker" | "gargantua" | "predator" | "advancedblink" | "advancedrecall" | "advanceddestroyer" | "blinkhunter" | "assaultbot" | "artillery" | "swiftshocker" | "mammoth" | "gunbot" | "mortar" | "blink" | "advancedbot" | "stinger" | "behemoth" | "missilebot" | "heavyhunter" | "destroyer" | "hornet" | "turret" | "crossbow" | "knight" | "raider" | "wasp" | "flakturret";
         name: string;
         id: string;
+        unitId: number;
         unitDescription: string;
         unitLore: string;
         techTier: {
@@ -849,12 +849,14 @@ export type UnitSchema = z.infer<typeof UnitSchema>;
 export declare class Unit {
     readonly data: UnitSchema;
     constructor(data: UnitSchema);
+    static parse: (data: unknown) => Unit;
+    get techTierId(): number;
     get id(): string;
     get details(): {
-        unitId: number;
-        slug: string;
+        slug: "bulwark" | "ballista" | "crab" | "butterfly" | "katbus" | "kingcrab" | "hunter" | "heavyballista" | "dragonfly" | "recall" | "bomber" | "recallhunter" | "kraken" | "locust" | "crusader" | "falcon" | "scorpion" | "valkyrie" | "airship" | "beetle" | "sniper" | "recallshocker" | "shocker" | "gargantua" | "predator" | "advancedblink" | "advancedrecall" | "advanceddestroyer" | "blinkhunter" | "assaultbot" | "artillery" | "swiftshocker" | "mammoth" | "gunbot" | "mortar" | "blink" | "advancedbot" | "stinger" | "behemoth" | "missilebot" | "heavyhunter" | "destroyer" | "hornet" | "turret" | "crossbow" | "knight" | "raider" | "wasp" | "flakturret";
         name: string;
         id: string;
+        unitId: number;
         unitDescription: string;
         unitLore: string;
         techTier: {

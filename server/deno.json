@@ -1,10 +1,11 @@
 {
   "name": "@battle-aces-fan/server",
-  "version": "0.2.32",
+  "version": "0.2.36",
   "exports": "./mod.ts",
   "imports": {
     "@hono/zod-validator": "npm:@hono/zod-validator@^0.4.1",
     "@battle-aces-fan/app-context": "../app-context/mod.ts",
+    "@battle-aces-fan/datacontracts": "../datacontracts/mod.ts",
     "@battle-aces-fan/repos": "../repos/mod.ts",
     "hono": "npm:hono@^4.6.10",
     "zod": "npm:zod@^3.23.8",

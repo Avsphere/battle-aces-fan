@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { UnitSlugKind } from "./UnitSlugKind.js";
 const UnitColorSchema = z.object({
     hex: z.string(),
     red: z.number(),
@@ -51,7 +52,7 @@ const UnitLeaderboardStatsSchema = z.object({
 export const UnitDetailsSchema = z.object({
     id: z.string(),
     unitId: z.number(),
-    slug: z.string(),
+    slug: UnitSlugKind,
     name: z.string(),
     unitDescription: z.string(),
     unitLore: z.string(),
@@ -88,6 +89,9 @@ export class Unit {
             value: data
         });
     }
+    get techTierId() {
+        return this.data.details.techTier.techTierId;
+    }
     get id() {
         return this.data._id;
     }
@@ -95,3 +99,11 @@ export class Unit {
         return this.data.details;
     }
 }
+Object.defineProperty(Unit, "parse", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: (data) => {
+        return new Unit(UnitSchema.parse(data));
+    }
+});

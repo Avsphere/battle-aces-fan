@@ -1,5 +1,5 @@
-import { Collection, Db } from 'mongodb';
-import { User, UserSchema } from '@battle-aces-fan/datacontracts';
+import { Collection, Db } from "mongodb";
+import { User, UserSchema } from "@battle-aces-fan/datacontracts";
 export type UserCollection = Collection<UserSchema>;
 export declare const UserCollection: (db: Db) => Collection<{
     _id: string;
@@ -14,6 +14,16 @@ export declare class UserModel {
     static create: (db: Db) => UserModel;
     create: () => Promise<User>;
     findById: (id: string) => Promise<User>;
+    tryFindById: (id: string) => Promise<User | null>;
+    findByBattleAcesUsername: (username: string) => Promise<User>;
+    addIpToUser: (params: {
+        userId: string;
+        ip: string;
+    }) => Promise<void>;
+    setBattleAcesUsername: (params: {
+        userId: string;
+        battleAcesUsername: string;
+    }) => Promise<void>;
     findAll: () => Promise<User[]>;
     toDocument: (user: UserSchema) => User;
 }

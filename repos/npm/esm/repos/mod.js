@@ -1,1 +1,2 @@
-export * from './lib/repos.js';
+export * from './lib/Repos.js';
+export * from './repos.js';

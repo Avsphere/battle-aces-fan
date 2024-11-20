@@ -1,4 +1,4 @@
-import { Repos } from "../repos.ts";
+import { Repos } from "../Repos.ts";
 import { SurveyQuestionResponseRepo } from "./lib/SurveyQuestionResponseRepo.ts";
 import { SurveyQuestionTagMapRepo } from "./lib/SurveyQuestionTagMapRepo.ts";
 import { SurveyQuestionRepo } from "./lib/SurveyQuestionRepo.ts";

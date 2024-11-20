@@ -1,11 +1,11 @@
 import { z } from "zod";
 import { SurveyQuestionKind } from "./SurveyQuestion.ts";
 import { SmileyFaceRating } from "./SmileyFaceRating.ts";
-import { SurveyQuestionTagKind } from "./SurveyQuestionTag.ts";
+import { SurveyQuestionTag } from "./SurveyQuestionTag.ts";
 
 
 
-export const SurveyQuestionTagMap = z.record(SurveyQuestionKind, z.record(SmileyFaceRating, z.array(SurveyQuestionTagKind)))
+export const SurveyQuestionTagMap = z.record(SurveyQuestionKind, z.record(SmileyFaceRating, z.array(SurveyQuestionTag)))
 export type SurveyQuestionTagMap = z.infer<typeof SurveyQuestionTagMap>
 
 

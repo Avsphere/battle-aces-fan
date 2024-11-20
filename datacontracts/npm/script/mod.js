@@ -14,10 +14,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(require("./schemas/QuestionTagMap.js"), exports);
+__exportStar(require("./schemas/SurveyQuestionTagMap.js"), exports);
 __exportStar(require("./schemas/SmileyFaceRating.js"), exports);
 __exportStar(require("./schemas/SurveyQuestion.js"), exports);
 __exportStar(require("./schemas/SurveyQuestionTag.js"), exports);
 __exportStar(require("./schemas/SurveyQuestionResponse.js"), exports);
 __exportStar(require("./schemas/UnitSchema.js"), exports);
 __exportStar(require("./schemas/User.js"), exports);
+__exportStar(require("./schemas/TagMoodMap.js"), exports);

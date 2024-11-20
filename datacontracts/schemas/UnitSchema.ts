@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { UnitSlugKind } from "./UnitSlugKind.ts";
 
 const UnitColorSchema = z.object({
     hex: z.string(),
@@ -60,7 +61,7 @@ const UnitLeaderboardStatsSchema = z.object({
 export const UnitDetailsSchema = z.object({
     id: z.string(),
     unitId: z.number(),
-    slug: z.string(),
+    slug: UnitSlugKind,
     name: z.string(),
     unitDescription: z.string(),
     unitLore: z.string(),
@@ -101,6 +102,11 @@ export class Unit {
     static parse = (data: unknown) => {
         return new Unit(UnitSchema.parse(data));
     }
+
+    get techTierId() {
+        return this.data.details.techTier.techTierId
+    }
+
 
     get id() {
         return this.data._id;

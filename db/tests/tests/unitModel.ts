@@ -5,16 +5,17 @@ import { Db } from "../../lib/models/Models.ts";
 import { UnitDetailsSchema } from "@battle-aces-fan/datacontracts";
 import { ObjectId } from "mongodb";
 import { assertEquals } from "../lib/testDeps.ts";
+import assert from "node:assert";
 
 // Helper function to create unique sample unit details
 function createSampleUnitDetails(
   overrides: Partial<UnitDetailsSchema> = {},
 ): UnitDetailsSchema {
   const id = new ObjectId().toString();
-  return {
+  const a : UnitDetailsSchema = {
     id,
     unitId: Math.floor(Math.random() * 100000),
-    slug: `unit-${id}`,
+    slug: `advancedblink`,
     name: `Unit ${id}`,
     unitDescription: "Sample unit description",
     unitLore: "Sample unit lore",
@@ -90,6 +91,7 @@ function createSampleUnitDetails(
     },
     ...overrides,
   };
+  return a;
 }
 
 Deno.test("UnitModel methods", async (testCtx) => {
@@ -109,9 +111,12 @@ Deno.test("UnitModel methods", async (testCtx) => {
     const unitDetails = createSampleUnitDetails();
     const createdUnit = await unitModel.create(unitDetails);
 
-    const foundUnit = await unitModel.findBySlug(unitDetails.slug);
-    assertEquals(foundUnit.id, createdUnit.id);
-    assertEquals(foundUnit.details.slug, unitDetails.slug);
+    const foundUnits = await unitModel.findBySlug(unitDetails.slug);
+
+    const found = foundUnits.find((unit) => unit.id === createdUnit.id);
+    assert(found, `Unit with slug ${unitDetails.slug} not found`);
+    assertEquals(found.id, createdUnit.id);
+    assertEquals(found.details.slug, unitDetails.slug);
   });
 
   await testCtx.step("update unit by id", async () => {

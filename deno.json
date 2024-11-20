@@ -2,8 +2,9 @@
   "workspace": ["./datacontracts", "config-provider", "./db", "app-context", "repos", "./server", "./user-clients" ],
   "tasks": {
     "dev": "deno run --watch main.ts",
-    "start": "deno run --allow-net ./server/main.ts",
-    "publish": "deno run -A ./scripts/publishAll.ts"
+    "start": "deno run -A ./server/main.ts",
+    "publish": "deno run -A ./scripts/publishAll.ts",
+    "publish-by-name": "deno run -A ./scripts/publishByName.ts"
   },
   "imports": {
     "@deno/dnt": "jsr:@deno/dnt@^0.41.3",

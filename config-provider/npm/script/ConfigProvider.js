@@ -34,8 +34,11 @@ exports.ConfigProvider = {
     get config() {
         const mongoConnectionString = dntShim.Deno.env.get("MONGO_CONNECTION_STRING");
         (0, node_assert_1.default)(mongoConnectionString, "MONGO_CONNECTION_STRING is required");
+        const port = dntShim.Deno.env.get("PORT");
+        (0, node_assert_1.default)(port, "PORT is required");
         return {
             MONGO_CONNECTION_STRING: mongoConnectionString,
+            PORT: parseInt(port)
         };
     }
 };

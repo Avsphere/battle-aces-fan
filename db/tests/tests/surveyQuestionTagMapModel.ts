@@ -1,6 +1,6 @@
 // tests/survey_question_tag_map_model_test.ts
 
-import { SurveyQuestionTagKind } from "@battle-aces-fan/datacontracts";
+import { SurveyQuestionTag } from "@battle-aces-fan/datacontracts";
 import { Db } from "../../lib/models/Models.ts";
 import { assertEquals } from "../lib/testDeps.ts";
 

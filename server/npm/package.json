@@ -1,18 +1,18 @@
 {
   "name": "@battle-aces-fan/server",
-  "version": "0.2.32",
+  "version": "0.2.36",
   "description": "Yes. This is how I choose to spend my time.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/avsphere/battle-aces-fan.git"
   },
   "license": "MIT",
-  "main": "./script/mod.js",
-  "module": "./esm/mod.js",
+  "main": "./script/server/mod.js",
+  "module": "./esm/server/mod.js",
   "exports": {
     ".": {
-      "import": "./esm/mod.js",
-      "require": "./script/mod.js"
+      "import": "./esm/server/mod.js",
+      "require": "./script/server/mod.js"
     }
   },
   "scripts": {
@@ -22,10 +22,11 @@
   "dependencies": {
     "hono": "^4.6.10",
     "zod": "^3.23.8",
-    "@battle-aces-fan/app-context": "0.2.32",
-    "@battle-aces-fan/repos": "0.2.32",
+    "@battle-aces-fan/app-context": "0.2.42",
+    "@battle-aces-fan/repos": "0.2.36",
     "@types/node-fetch": "^2.5.7",
-    "@hono/zod-validator": "^0.4.1"
+    "@hono/zod-validator": "^0.4.1",
+    "@battle-aces-fan/datacontracts": "0.2.36"
   },
   "devDependencies": {
     "@types/node": "^20.9.0",

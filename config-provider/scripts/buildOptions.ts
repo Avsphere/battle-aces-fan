@@ -15,7 +15,7 @@ export const buildOptions : BuildOptions = {
   },
   "package": {
     "name": "@battle-aces-fan/config-provider",
-    "version": "0.2.32",
+    "version": "0.2.36",
     "description": "Yes. This is how I choose to spend my time.",
     "license": "MIT",
     "private": false,

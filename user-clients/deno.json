@@ -1,6 +1,6 @@
 {
   "name": "@battle-aces-fan/user-clients",
-  "version": "0.2.34",
+  "version": "0.2.38",
   "exports": "./mod.ts",
   "license": "MIT",
   "imports": {

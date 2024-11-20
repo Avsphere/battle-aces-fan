@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { SmileyFaceRating } from "./SmileyFaceRating.ts";
-import { SurveyQuestionTagKind } from "./SurveyQuestionTag.ts";
+import { SurveyQuestionTag } from "./SurveyQuestionTag.ts";
 import { SurveyQuestionKind } from "./SurveyQuestion.ts";
 
 export const SurveyQuestionResponseDetails = z.object({
@@ -8,7 +8,7 @@ export const SurveyQuestionResponseDetails = z.object({
     questionKind : SurveyQuestionKind,
     userId : z.string(),
     smileyFaceRating : SmileyFaceRating.nullable(),
-    tags : z.array(SurveyQuestionTagKind),
+    tags : z.array(SurveyQuestionTag),
     /**
      * we count skipping as a valid answer as this is still interesting
      */

@@ -1,6 +1,6 @@
 {
   "name": "@battle-aces-fan/db",
-  "version": "0.2.38",
+  "version": "0.2.42",
   "exports": "./mod.ts",
   "license": "MIT",
   "imports": {

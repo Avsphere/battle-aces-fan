@@ -1,14 +1,17 @@
 {
   "name": "@battle-aces-fan/repos",
-  "version": "0.2.32",
+  "version": "0.2.36",
   "exports": "./mod.ts",
   "license": "MIT",
   "imports": {
     "@std/cli": "jsr:@std/cli@^1.0.6",
+    "@std/path": "jsr:@std/path@^1.0.8",
     "@std/dotenv": "jsr:@std/dotenv@^0.225.2",
     "@battle-aces-fan/config-provider": "../config-provider/mod.ts",
     "@battle-aces-fan/datacontracts": "../datacontracts/mod.ts",
     "@battle-aces-fan/app-context": "../app-context/mod.ts",
+    "@types/lodash": "npm:@types/lodash@^4.17.13",
+    "lodash": "npm:lodash@^4.17.21",
     "zod": "npm:zod@^3.23.8"
   }
 }

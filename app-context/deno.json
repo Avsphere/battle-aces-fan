@@ -1,6 +1,6 @@
 {
   "name": "@battle-aces-fan/app-context",
-  "version": "0.2.32",
+  "version": "0.2.42",
   "exports": "./mod.ts",
   "license": "MIT",
   "imports": {

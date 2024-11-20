@@ -4,6 +4,8 @@ import { Hono } from "hono";
 import { Repos } from "@battle-aces-fan/repos";
 import { UserRoutes } from "./routes/UserRoutes.ts";
 import { cors } from "hono/cors";
+import { UnitRoutes } from "./routes/UnitRoutes.ts";
+import { TagRoutes } from "./routes/TagRoutes.ts";
 
 const AuthorSchema = z.object({
   name: z.string(),
@@ -14,7 +16,8 @@ type Author = z.infer<typeof AuthorSchema>;
 
 export const BattleAcesFanApp = (repos: Repos) => {
   const userRoutes = UserRoutes(repos);
-
+  const unitRoutes = UnitRoutes(repos);
+  const tagRoutes = TagRoutes(repos);
   const app = new Hono()
     .use(
       "*",
@@ -24,19 +27,9 @@ export const BattleAcesFanApp = (repos: Repos) => {
         allowHeaders: ["Content-Type", "Authorization"],
       }),
     )
-    .get("/", (c) => {
-      return c.text("Hello Hono!");
-    })
-    .post("/author", zValidator("json", AuthorSchema), async (c) => {
-      const data = AuthorSchema.parse(await c.req.json());
-      // const data = c.req.valid('json')
-
-      return c.json({
-        success: true,
-        message: `${data.name} is ${data.age}`,
-      });
-    })
-    .route("/users", userRoutes);
+    .route("/users", userRoutes)
+    .route("/units", unitRoutes)
+    .route("/tags", tagRoutes)
 
   return app;
 };

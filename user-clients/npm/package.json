@@ -1,6 +1,6 @@
 {
   "name": "@battle-aces-fan/user-clients",
-  "version": "0.2.34",
+  "version": "0.2.38",
   "description": "Yes. This is how I choose to spend my time.",
   "repository": {
     "type": "git",
@@ -23,7 +23,7 @@
     "hono": "^4.6.10",
     "@hono/zod-validator": "^0.4.1",
     "zod": "^3.23.8",
-    "@battle-aces-fan/server": "0.2.32"
+    "@battle-aces-fan/server": "0.2.36"
   },
   "devDependencies": {
     "@types/node": "^20.9.0",

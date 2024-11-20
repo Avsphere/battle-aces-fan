@@ -1,1 +1,1 @@
-{"version":3,"file":"ConfigProvider.d.ts","sourceRoot":"","sources":["../src/ConfigProvider.ts"],"names":[],"mappings":"AAEA,OAAO,2CAA2C,CAAC;AAEnD,eAAO,MAAM,cAAc;;;;CAU1B,CAAA"}
+{"version":3,"file":"ConfigProvider.d.ts","sourceRoot":"","sources":["../src/ConfigProvider.ts"],"names":[],"mappings":"AAEA,OAAO,2CAA2C,CAAC;AAEnD,eAAO,MAAM,cAAc;;;;;CAa1B,CAAA"}

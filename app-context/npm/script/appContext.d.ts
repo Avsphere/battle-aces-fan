@@ -1,8 +1,7 @@
-export type AppContext = typeof appContext;
-export declare const appContext: {
-    readonly models: {
-        users: import("@battle-aces-fan/db").UserModel;
-    };
+import { Models } from "@battle-aces-fan/db";
+export type AppContext = {
+    readonly models: Models;
     readonly dispose: () => Promise<void>;
 };
+export declare const appContext: AppContext;
 //# sourceMappingURL=appContext.d.ts.map

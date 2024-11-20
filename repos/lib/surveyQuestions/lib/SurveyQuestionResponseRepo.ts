@@ -1,5 +1,5 @@
 import { SurveyQuestionResponseModel } from "../../../../db/lib/models/lib/SurveyQuestionResponseModel.ts";
-import { Repos } from "../../repos.ts";
+import { Repos } from "../../Repos.ts";
 
 
 export type SurveyQuestionResponseRepo = ReturnType<typeof SurveyQuestionResponseRepo>

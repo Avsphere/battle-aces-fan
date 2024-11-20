@@ -1,1 +1,2 @@
-export * from './lib/repos.ts'
+export * from './lib/Repos.ts'
+export * from './repos.ts'
