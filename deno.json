@@ -1,5 +1,13 @@
 {
-  "workspace": ["./datacontracts", "config-provider", "./db", "app-context", "repos", "./server", "./user-clients" ],
+  "workspace": [
+    "./datacontracts",
+    "config-provider",
+    "./db",
+    "app-context",
+    "repos",
+    "./server",
+    "./user-clients"
+  ],
   "tasks": {
     "dev": "deno run --watch main.ts",
     "start": "deno run -A ./server/main.ts",
@@ -10,6 +18,14 @@
     "@deno/dnt": "jsr:@deno/dnt@^0.41.3",
     "@std/assert": "jsr:@std/assert@1",
     "chalk": "npm:chalk@^5.3.0"
+  },
+  "lint": {
+    "exclude": ["./**/npm"],
+    "rules": {
+      "tags": ["recommended"],
+      "include": ["ban-untagged-todo"],
+      "exclude": ["no-unused-vars"]
+    }
   },
   "compilerOptions": {
     "jsx": "precompile",

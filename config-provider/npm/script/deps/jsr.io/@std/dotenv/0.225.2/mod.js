@@ -1,30 +1,54 @@
 "use strict";
 // Copyright 2018-2024 the Deno authors. All rights reserved. MIT license.
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
+var __createBinding = (this && this.__createBinding) ||
+  (Object.create
+    ? (function (o, m, k, k2) {
+      if (k2 === undefined) k2 = k;
+      var desc = Object.getOwnPropertyDescriptor(m, k);
+      if (
+        !desc ||
+        ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)
+      ) {
+        desc = {
+          enumerable: true,
+          get: function () {
+            return m[k];
+          },
+        };
+      }
+      Object.defineProperty(o, k2, desc);
+    })
+    : (function (o, m, k, k2) {
+      if (k2 === undefined) k2 = k;
+      o[k2] = m[k];
+    }));
+var __setModuleDefault = (this && this.__setModuleDefault) ||
+  (Object.create
+    ? (function (o, v) {
+      Object.defineProperty(o, "default", { enumerable: true, value: v });
+    })
+    : function (o, v) {
+      o["default"] = v;
+    });
 var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) {
+    for (var k in mod) {
+      if (
+        k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)
+      ) __createBinding(result, mod, k);
+    }
+  }
+  __setModuleDefault(result, mod);
+  return result;
 };
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+var __exportStar = (this && this.__exportStar) || function (m, exports) {
+  for (var p in m) {
+    if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) {
+      __createBinding(exports, m, p);
+    }
+  }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.loadSync = loadSync;
@@ -68,16 +92,17 @@ __exportStar(require("./parse.js"), exports);
  * @returns The parsed environment variables.
  */
 function loadSync(options = {}) {
-    const { envPath = ".env", export: _export = false, } = options;
-    const conf = envPath ? parseFileSync(envPath) : {};
-    if (_export) {
-        for (const [key, value] of Object.entries(conf)) {
-            if (dntShim.Deno.env.get(key) !== undefined)
-                continue;
-            dntShim.Deno.env.set(key, value);
-        }
+  const { envPath = ".env", export: _export = false } = options;
+  const conf = envPath ? parseFileSync(envPath) : {};
+  if (_export) {
+    for (const [key, value] of Object.entries(conf)) {
+      if (dntShim.Deno.env.get(key) !== undefined) {
+        continue;
+      }
+      dntShim.Deno.env.set(key, value);
     }
-    return conf;
+  }
+  return conf;
 }
 /**
  * Load environment variables from a `.env` file.  Loaded variables are accessible
@@ -209,34 +234,35 @@ function loadSync(options = {}) {
  * @returns The parsed environment variables
  */
 async function load(options = {}) {
-    const { envPath = ".env", export: _export = false, } = options;
-    const conf = envPath ? await parseFile(envPath) : {};
-    if (_export) {
-        for (const [key, value] of Object.entries(conf)) {
-            if (dntShim.Deno.env.get(key) !== undefined)
-                continue;
-            dntShim.Deno.env.set(key, value);
-        }
+  const { envPath = ".env", export: _export = false } = options;
+  const conf = envPath ? await parseFile(envPath) : {};
+  if (_export) {
+    for (const [key, value] of Object.entries(conf)) {
+      if (dntShim.Deno.env.get(key) !== undefined) {
+        continue;
+      }
+      dntShim.Deno.env.set(key, value);
     }
-    return conf;
+  }
+  return conf;
 }
 function parseFileSync(filepath) {
-    try {
-        return (0, parse_js_1.parse)(dntShim.Deno.readTextFileSync(filepath));
+  try {
+    return (0, parse_js_1.parse)(dntShim.Deno.readTextFileSync(filepath));
+  } catch (e) {
+    if (e instanceof dntShim.Deno.errors.NotFound) {
+      return {};
     }
-    catch (e) {
-        if (e instanceof dntShim.Deno.errors.NotFound)
-            return {};
-        throw e;
-    }
+    throw e;
+  }
 }
 async function parseFile(filepath) {
-    try {
-        return (0, parse_js_1.parse)(await dntShim.Deno.readTextFile(filepath));
+  try {
+    return (0, parse_js_1.parse)(await dntShim.Deno.readTextFile(filepath));
+  } catch (e) {
+    if (e instanceof dntShim.Deno.errors.NotFound) {
+      return {};
     }
-    catch (e) {
-        if (e instanceof dntShim.Deno.errors.NotFound)
-            return {};
-        throw e;
-    }
+    throw e;
+  }
 }

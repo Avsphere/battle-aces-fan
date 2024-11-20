@@ -19,29 +19,29 @@ exports.stringify = stringify;
  * @returns string of object
  */
 function stringify(object) {
-    const lines = [];
-    for (const [key, value] of Object.entries(object)) {
-        let quote;
-        let escapedValue = value ?? "";
-        if (key.startsWith("#")) {
-            console.warn(`key starts with a '#' indicates a comment and is ignored: '${key}'`);
-            continue;
-        }
-        else if (escapedValue.includes("\n") || escapedValue.includes("'")) {
-            // escape inner new lines
-            escapedValue = escapedValue.replaceAll("\n", "\\n");
-            quote = `"`;
-        }
-        else if (escapedValue.match(/\W/)) {
-            quote = "'";
-        }
-        if (quote) {
-            // escape inner quotes
-            escapedValue = escapedValue.replaceAll(quote, `\\${quote}`);
-            escapedValue = `${quote}${escapedValue}${quote}`;
-        }
-        const line = `${key}=${escapedValue}`;
-        lines.push(line);
+  const lines = [];
+  for (const [key, value] of Object.entries(object)) {
+    let quote;
+    let escapedValue = value ?? "";
+    if (key.startsWith("#")) {
+      console.warn(
+        `key starts with a '#' indicates a comment and is ignored: '${key}'`,
+      );
+      continue;
+    } else if (escapedValue.includes("\n") || escapedValue.includes("'")) {
+      // escape inner new lines
+      escapedValue = escapedValue.replaceAll("\n", "\\n");
+      quote = `"`;
+    } else if (escapedValue.match(/\W/)) {
+      quote = "'";
     }
-    return lines.join("\n");
+    if (quote) {
+      // escape inner quotes
+      escapedValue = escapedValue.replaceAll(quote, `\\${quote}`);
+      escapedValue = `${quote}${escapedValue}${quote}`;
+    }
+    const line = `${key}=${escapedValue}`;
+    lines.push(line);
+  }
+  return lines.join("\n");
 }

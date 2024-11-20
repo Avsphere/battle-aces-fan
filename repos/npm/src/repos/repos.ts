@@ -1,3 +1,3 @@
 import { Repos } from "./lib/Repos.js";
 
-export const repos = Repos.create()
+export const repos = Repos.create();

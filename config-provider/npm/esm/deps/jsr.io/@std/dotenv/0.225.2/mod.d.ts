@@ -2,20 +2,20 @@ export * from "./stringify.js";
 export * from "./parse.js";
 /** Options for {@linkcode load} and {@linkcode loadSync}. */
 export interface LoadOptions {
-    /**
-     * Optional path to `.env` file. To prevent the default value from being
-     * used, set to `null`.
-     *
-     * @default {"./.env"}
-     */
-    envPath?: string | null;
-    /**
-     * Set to `true` to export all `.env` variables to the current processes
-     * environment. Variables are then accessible via `Deno.env.get(<key>)`.
-     *
-     * @default {false}
-     */
-    export?: boolean;
+  /**
+   * Optional path to `.env` file. To prevent the default value from being
+   * used, set to `null`.
+   *
+   * @default {"./.env"}
+   */
+  envPath?: string | null;
+  /**
+   * Set to `true` to export all `.env` variables to the current processes
+   * environment. Variables are then accessible via `Deno.env.get(<key>)`.
+   *
+   * @default {false}
+   */
+  export?: boolean;
 }
 /**
  * Works identically to {@linkcode load}, but synchronously.
@@ -160,5 +160,7 @@ export declare function loadSync(options?: LoadOptions): Record<string, string>;
  * @param options The options
  * @returns The parsed environment variables
  */
-export declare function load(options?: LoadOptions): Promise<Record<string, string>>;
+export declare function load(
+  options?: LoadOptions,
+): Promise<Record<string, string>>;
 //# sourceMappingURL=mod.d.ts.map

@@ -1,4 +1,7 @@
-import { UnitDetailsSchema, UnitSchema } from "../../schemas/UnitSchema.ts";
+import {
+  UnitDetailsSchema,
+  type UnitSchema,
+} from "../../schemas/UnitSchema.ts";
 import { assertEquals } from "../lib/testDeps.ts";
 import { unitTestdata } from "../lib/unitTestData.ts";
 

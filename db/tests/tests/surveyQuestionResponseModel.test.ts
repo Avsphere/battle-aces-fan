@@ -4,7 +4,6 @@ import assert from "node:assert";
 import { Db } from "../../mod.ts";
 import { assertEquals } from "../lib/testDeps.ts";
 
-
 Deno.test("SurveyQuestionResponseModel tests with updated schema", async (testCtx) => {
   const models = Db.models();
 

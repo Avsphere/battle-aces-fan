@@ -1,4 +1,4 @@
-import { build, emptyDir, BuildOptions } from "@deno/dnt";
+import { build, type BuildOptions, emptyDir } from "@deno/dnt";
 import { buildOptions } from "./buildOptions.ts";
 
 await emptyDir("./npm");

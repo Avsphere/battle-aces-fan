@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { zValidator } from "@hono/zod-validator";
+import type { zValidator } from "@hono/zod-validator";
 import { Hono } from "hono";
 import { Repos } from "@battle-aces-fan/repos";
 import { UserRoutes } from "./routes/UserRoutes.ts";
@@ -29,7 +29,7 @@ export const BattleAcesFanApp = (repos: Repos) => {
     )
     .route("/users", userRoutes)
     .route("/units", unitRoutes)
-    .route("/tags", tagRoutes)
+    .route("/tags", tagRoutes);
 
   return app;
 };

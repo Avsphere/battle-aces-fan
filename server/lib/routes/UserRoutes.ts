@@ -1,9 +1,9 @@
 import { Hono } from "hono";
 import { appContext } from "@battle-aces-fan/app-context";
-import { Repos } from "@battle-aces-fan/repos";
-import { FindByIdSchema } from "./lib/routeUtils.ts";
+import type { Repos } from "@battle-aces-fan/repos";
+import type { FindByIdSchema } from "./lib/routeUtils.ts";
 import { zValidator } from "@hono/zod-validator";
-import { UsersRepo } from "../../../repos/lib/users/UsersRepo.ts";
+import type { UsersRepo } from "../../../repos/lib/users/UsersRepo.ts";
 import { SurveyQuestionResponseDetails } from "@battle-aces-fan/datacontracts";
 import { z } from "zod";
 
@@ -43,7 +43,7 @@ export const UserRoutes = (repos: Repos) => {
       async (c) => {
         const userId = c.req.param().userId;
         const questions = await repos.users.findAllUnansweredQuestions(userId);
-        return c.json({ questions : questions.map( q => q.data) });
+        return c.json({ questions: questions.map((q) => q.data) });
       },
     )
     .post(
@@ -56,24 +56,26 @@ export const UserRoutes = (repos: Repos) => {
           details: {
             ...response.details,
             userId,
-          }
+          },
         });
-
 
         return c.json({
           success: true,
         });
-
       },
     )
-    .get("/:userId", zValidator("param", z.object({ userId: z.string() })), async (c) => {
-      const userId = c.req.param().userId;
+    .get(
+      "/:userId",
+      zValidator("param", z.object({ userId: z.string() })),
+      async (c) => {
+        const userId = c.req.param().userId;
 
-      const user = await appContext.models.users.findById(userId);
-      return c.json({
-        user: user.data,
-      });
-    })
+        const user = await appContext.models.users.findById(userId);
+        return c.json({
+          user: user.data,
+        });
+      },
+    );
 
   return userRoutes;
 };

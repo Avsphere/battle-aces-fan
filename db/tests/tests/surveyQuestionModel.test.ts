@@ -53,7 +53,7 @@ Deno.test("SurveyQuestionModel tests", async (testCtx) => {
       details: {
         kind: "unit_single",
         unitSlug: "unit456",
-        tags : [],
+        tags: [],
       },
       isActive: false,
     });

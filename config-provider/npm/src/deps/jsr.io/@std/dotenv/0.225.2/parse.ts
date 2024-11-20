@@ -1,7 +1,6 @@
 // Copyright 2018-2024 the Deno authors. All rights reserved. MIT license.
 import * as dntShim from "../../../../../_dnt.shims.js";
 
-
 type LineParseResult = {
   key: string;
   unquoted: string;

@@ -1,1 +1,1 @@
-export * from './ConfigProvider.ts'
+export * from "./ConfigProvider.ts";

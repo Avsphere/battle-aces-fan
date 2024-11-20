@@ -6,26 +6,29 @@ import { cors } from "hono/cors";
 import { UnitRoutes } from "./routes/UnitRoutes.js";
 import { TagRoutes } from "./routes/TagRoutes.js";
 const AuthorSchema = z.object({
-    name: z.string(),
-    age: z.number(),
-    hairColor: z.string(),
+  name: z.string(),
+  age: z.number(),
+  hairColor: z.string(),
 });
 export const BattleAcesFanApp = (repos) => {
-    const userRoutes = UserRoutes(repos);
-    const unitRoutes = UnitRoutes(repos);
-    const tagRoutes = TagRoutes(repos);
-    const app = new Hono()
-        .use("*", cors({
+  const userRoutes = UserRoutes(repos);
+  const unitRoutes = UnitRoutes(repos);
+  const tagRoutes = TagRoutes(repos);
+  const app = new Hono()
+    .use(
+      "*",
+      cors({
         origin: "http://localhost:3000", // Allow requests from this origin
         allowMethods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
         allowHeaders: ["Content-Type", "Authorization"],
-    }))
-        .route("/users", userRoutes)
-        .route("/units", unitRoutes)
-        .route("/tags", tagRoutes);
-    return app;
+      }),
+    )
+    .route("/users", userRoutes)
+    .route("/units", unitRoutes)
+    .route("/tags", tagRoutes);
+  return app;
 };
 BattleAcesFanApp.create = () => {
-    const repos = Repos.create();
-    return BattleAcesFanApp(repos);
+  const repos = Repos.create();
+  return BattleAcesFanApp(repos);
 };

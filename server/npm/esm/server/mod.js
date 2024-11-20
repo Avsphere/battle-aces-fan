@@ -1,1 +1,1 @@
-export { BattleAcesFanApp } from './lib/app.js';
+export { BattleAcesFanApp } from "./lib/app.js";

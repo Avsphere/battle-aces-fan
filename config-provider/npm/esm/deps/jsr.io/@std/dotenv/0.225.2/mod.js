@@ -38,16 +38,17 @@ export * from "./parse.js";
  * @returns The parsed environment variables.
  */
 export function loadSync(options = {}) {
-    const { envPath = ".env", export: _export = false, } = options;
-    const conf = envPath ? parseFileSync(envPath) : {};
-    if (_export) {
-        for (const [key, value] of Object.entries(conf)) {
-            if (dntShim.Deno.env.get(key) !== undefined)
-                continue;
-            dntShim.Deno.env.set(key, value);
-        }
+  const { envPath = ".env", export: _export = false } = options;
+  const conf = envPath ? parseFileSync(envPath) : {};
+  if (_export) {
+    for (const [key, value] of Object.entries(conf)) {
+      if (dntShim.Deno.env.get(key) !== undefined) {
+        continue;
+      }
+      dntShim.Deno.env.set(key, value);
     }
-    return conf;
+  }
+  return conf;
 }
 /**
  * Load environment variables from a `.env` file.  Loaded variables are accessible
@@ -179,34 +180,35 @@ export function loadSync(options = {}) {
  * @returns The parsed environment variables
  */
 export async function load(options = {}) {
-    const { envPath = ".env", export: _export = false, } = options;
-    const conf = envPath ? await parseFile(envPath) : {};
-    if (_export) {
-        for (const [key, value] of Object.entries(conf)) {
-            if (dntShim.Deno.env.get(key) !== undefined)
-                continue;
-            dntShim.Deno.env.set(key, value);
-        }
+  const { envPath = ".env", export: _export = false } = options;
+  const conf = envPath ? await parseFile(envPath) : {};
+  if (_export) {
+    for (const [key, value] of Object.entries(conf)) {
+      if (dntShim.Deno.env.get(key) !== undefined) {
+        continue;
+      }
+      dntShim.Deno.env.set(key, value);
     }
-    return conf;
+  }
+  return conf;
 }
 function parseFileSync(filepath) {
-    try {
-        return parse(dntShim.Deno.readTextFileSync(filepath));
+  try {
+    return parse(dntShim.Deno.readTextFileSync(filepath));
+  } catch (e) {
+    if (e instanceof dntShim.Deno.errors.NotFound) {
+      return {};
     }
-    catch (e) {
-        if (e instanceof dntShim.Deno.errors.NotFound)
-            return {};
-        throw e;
-    }
+    throw e;
+  }
 }
 async function parseFile(filepath) {
-    try {
-        return parse(await dntShim.Deno.readTextFile(filepath));
+  try {
+    return parse(await dntShim.Deno.readTextFile(filepath));
+  } catch (e) {
+    if (e instanceof dntShim.Deno.errors.NotFound) {
+      return {};
     }
-    catch (e) {
-        if (e instanceof dntShim.Deno.errors.NotFound)
-            return {};
-        throw e;
-    }
+    throw e;
+  }
 }

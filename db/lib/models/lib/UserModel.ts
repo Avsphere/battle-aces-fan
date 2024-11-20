@@ -1,96 +1,96 @@
-import { Collection, Db, ObjectId } from "mongodb";
+import { type Collection, type Db, ObjectId } from "mongodb";
 import assert from "node:assert";
-import { User, UserSchema } from "@battle-aces-fan/datacontracts";
+import { User, type UserSchema } from "@battle-aces-fan/datacontracts";
 
 export type UserCollection = Collection<UserSchema>;
 export const UserCollection = (db: Db) => {
-    return db.collection<UserSchema>("users");
+  return db.collection<UserSchema>("users");
 };
 
 export class UserModel {
-    constructor(private readonly collection: UserCollection) {}
+  constructor(private readonly collection: UserCollection) {}
 
-    static create = (db: Db) => new UserModel(UserCollection(db));
+  static create = (db: Db) => new UserModel(UserCollection(db));
 
-    create = async () => {
-        const user: UserSchema = {
-            _id: new ObjectId().toString(),
-            createdAt: Date.now(),
-            lastUpdatedAt: Date.now(),
-            ips: [],
-        };
-
-        await this.collection.insertOne(user);
-        return this.toDocument(user);
+  create = async () => {
+    const user: UserSchema = {
+      _id: new ObjectId().toString(),
+      createdAt: Date.now(),
+      lastUpdatedAt: Date.now(),
+      ips: [],
     };
 
-    findById = async (id: string) => {
-        const doc = await this.collection.findOne({ _id: id });
-        assert(doc);
+    await this.collection.insertOne(user);
+    return this.toDocument(user);
+  };
 
-        return this.toDocument(doc);
-    };
+  findById = async (id: string) => {
+    const doc = await this.collection.findOne({ _id: id });
+    assert(doc);
 
-    tryFindById = async (id: string) => {
-        const doc = await this.collection.findOne({ _id: id });
-        if (!doc) {
-            return null;
-        }
+    return this.toDocument(doc);
+  };
 
-        return this.toDocument(doc);
+  tryFindById = async (id: string) => {
+    const doc = await this.collection.findOne({ _id: id });
+    if (!doc) {
+      return null;
     }
 
-    findByBattleAcesUsername = async (username: string) => {
-        const doc = await this.collection.findOne({
-            battleAcesUsername: username,
-        });
-        assert(doc);
-        return this.toDocument(doc);
-    };
+    return this.toDocument(doc);
+  };
 
-    addIpToUser = async (params: { userId: string; ip: string }) => {
-        const { userId, ip } = params;
-        const user = await this.collection.findOne({ _id: userId });
-        assert(user);
+  findByBattleAcesUsername = async (username: string) => {
+    const doc = await this.collection.findOne({
+      battleAcesUsername: username,
+    });
+    assert(doc);
+    return this.toDocument(doc);
+  };
 
-        const ips = user.ips;
-        ips.push(ip);
+  addIpToUser = async (params: { userId: string; ip: string }) => {
+    const { userId, ip } = params;
+    const user = await this.collection.findOne({ _id: userId });
+    assert(user);
 
-        const ipSet = new Set(ips);
+    const ips = user.ips;
+    ips.push(ip);
 
-        await this.collection.updateOne(
-            { _id: userId },
-            {
-                $set: {
-                    lastUpdatedAt: Date.now(),
-                    ips: Array.from(ipSet),
-                },
-            },
-        );
-    };
+    const ipSet = new Set(ips);
 
-    setBattleAcesUsername = async (params: {
-        userId: string;
-        battleAcesUsername: string;
-    }) => {
-        const { userId, battleAcesUsername } = params;
-        await this.collection.updateOne(
-            { _id: userId },
-            {
-                $set: {
-                    lastUpdatedAt: Date.now(),
-                    battleAcesUsername,
-                },
-            },
-        );
-    };
+    await this.collection.updateOne(
+      { _id: userId },
+      {
+        $set: {
+          lastUpdatedAt: Date.now(),
+          ips: Array.from(ipSet),
+        },
+      },
+    );
+  };
 
-    findAll = async () => {
-        const docs = await this.collection.find().toArray();
-        return docs.map(this.toDocument);
-    };
+  setBattleAcesUsername = async (params: {
+    userId: string;
+    battleAcesUsername: string;
+  }) => {
+    const { userId, battleAcesUsername } = params;
+    await this.collection.updateOne(
+      { _id: userId },
+      {
+        $set: {
+          lastUpdatedAt: Date.now(),
+          battleAcesUsername,
+        },
+      },
+    );
+  };
 
-    toDocument = (user: UserSchema): User => {
-        return User.parse(user);
-    };
+  findAll = async () => {
+    const docs = await this.collection.find().toArray();
+    return docs.map(this.toDocument);
+  };
+
+  toDocument = (user: UserSchema): User => {
+    return User.parse(user);
+  };
 }

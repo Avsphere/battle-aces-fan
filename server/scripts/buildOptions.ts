@@ -1,17 +1,17 @@
-import { BuildOptions } from "@deno/dnt";
-export const buildOptions : BuildOptions = {
+import type { BuildOptions } from "@deno/dnt";
+export const buildOptions: BuildOptions = {
   "entryPoints": [
-    "./mod.ts"
+    "./mod.ts",
   ],
   "outDir": "./npm",
   "shims": {
     "deno": true,
-    "undici": true
+    "undici": true,
   },
   "compilerOptions": {
     "lib": [
-      "DOM"
-    ]
+      "DOM",
+    ],
   },
   "package": {
     "name": "@battle-aces-fan/server",
@@ -21,7 +21,7 @@ export const buildOptions : BuildOptions = {
     "private": false,
     "repository": {
       "type": "git",
-      "url": "git+https://github.com/avsphere/battle-aces-fan.git"
+      "url": "git+https://github.com/avsphere/battle-aces-fan.git",
     },
     "dependencies": {
       "hono": "^4.6.10",
@@ -30,7 +30,7 @@ export const buildOptions : BuildOptions = {
       "@battle-aces-fan/repos": "0.2.36",
       "@types/node-fetch": "^2.5.7",
       "@hono/zod-validator": "^0.4.1",
-      "@battle-aces-fan/datacontracts": "0.2.36"
-    }
-  }
+      "@battle-aces-fan/datacontracts": "0.2.36",
+    },
+  },
 };

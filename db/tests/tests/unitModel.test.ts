@@ -1,8 +1,7 @@
 // tests/unit_model_test.ts
 
-
 import { Db } from "../../lib/models/Models.ts";
-import { UnitDetailsSchema } from "@battle-aces-fan/datacontracts";
+import type { UnitDetailsSchema } from "@battle-aces-fan/datacontracts";
 import { ObjectId } from "mongodb";
 import { assertEquals } from "../lib/testDeps.ts";
 import assert from "node:assert";
@@ -12,7 +11,7 @@ function createSampleUnitDetails(
   overrides: Partial<UnitDetailsSchema> = {},
 ): UnitDetailsSchema {
   const id = new ObjectId().toString();
-  const a : UnitDetailsSchema = {
+  const a: UnitDetailsSchema = {
     id,
     unitId: Math.floor(Math.random() * 100000),
     slug: `advancedblink`,
@@ -168,9 +167,7 @@ Deno.test("UnitModel methods", async (testCtx) => {
     const maybeUnit = await unitModel.tryFindById(createdUnit.id);
 
     assertEquals(maybeUnit, null);
-
   });
 
-
-  await Db.dispose()
+  await Db.dispose();
 });

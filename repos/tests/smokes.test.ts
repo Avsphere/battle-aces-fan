@@ -1,4 +1,4 @@
-import assert from "node:assert";
+import type assert from "node:assert";
 
 Deno.test("smokes", async () => {
 });

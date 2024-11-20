@@ -23,7 +23,6 @@
  */
 import * as dntShim from "../../../../../_dnt.shims.js";
 
-
 import { parse } from "./parse.js";
 
 export * from "./stringify.js";

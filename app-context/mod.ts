@@ -1,1 +1,1 @@
-export * from './appContext.ts'
+export * from "./appContext.ts";

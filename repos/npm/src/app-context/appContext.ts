@@ -1,4 +1,4 @@
-import { Db, Models } from "@battle-aces-fan/db";
+import { Db, type Models } from "@battle-aces-fan/db";
 
 let _models: Models | undefined = undefined;
 const getModels = () => {
@@ -11,8 +11,8 @@ const getModels = () => {
 export type AppContext = {
   readonly models: Models;
   readonly dispose: () => Promise<void>;
-}
-export const appContext : AppContext = {
+};
+export const appContext: AppContext = {
   get models() {
     return getModels();
   },

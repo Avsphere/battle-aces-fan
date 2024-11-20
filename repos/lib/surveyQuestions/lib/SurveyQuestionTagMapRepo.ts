@@ -1,21 +1,18 @@
 import { generatedTagMoodMap } from "@battle-aces-fan/datacontracts";
-import { SurveyQuestionTagMap } from "../../../../datacontracts/schemas/SurveyQuestionTagMap.ts";
-import { Repos } from "../../Repos.ts";
+import type { SurveyQuestionTagMap } from "../../../../datacontracts/schemas/SurveyQuestionTagMap.ts";
+import type { Repos } from "../../Repos.ts";
 
+export type SurveyQuestionTagMapRepo = ReturnType<
+  typeof SurveyQuestionTagMapRepo
+>;
+export const SurveyQuestionTagMapRepo = (repos: Repos) => {
+  const appContext = repos.appContext;
 
-export type SurveyQuestionTagMapRepo = ReturnType<typeof SurveyQuestionTagMapRepo>
-export const SurveyQuestionTagMapRepo = (repos : Repos) => {
-    const appContext = repos.appContext
+  const getTagMoodMap = async () => {
+    return await generatedTagMoodMap;
+  };
 
-
-    const getTagMoodMap = async() => {
-        return generatedTagMoodMap
-    }
-
-
-    return {
-        getTagMoodMap
-    }
-
-
-}
+  return {
+    getTagMoodMap,
+  };
+};

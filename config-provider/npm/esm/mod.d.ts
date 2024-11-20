@@ -1,2 +1,2 @@
-export * from './ConfigProvider.js';
+export * from "./ConfigProvider.js";
 //# sourceMappingURL=mod.d.ts.map

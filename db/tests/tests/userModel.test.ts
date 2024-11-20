@@ -16,7 +16,7 @@ Deno.test("UserModel tests", async (testCtx) => {
 
   await testCtx.step("can set battleAcesUsername", async () => {
     const user = await models.users.create();
-    const username = createObjectId()
+    const username = createObjectId();
     await models.users.setBattleAcesUsername({
       userId: user.id,
       battleAcesUsername: username,
