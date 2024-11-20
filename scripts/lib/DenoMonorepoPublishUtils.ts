@@ -1,6 +1,7 @@
 import { build, type BuildOptions, emptyDir } from "@deno/dnt";
 import { expandGlob } from "jsr:@std/fs@1/expand-glob";
 import { resolve } from "jsr:@std/path@^1.0.7/resolve";
+import { waitForPackageVersion } from "./waitForPackageVersion.ts";
 
 type ModuleBuildTools = Awaited<
     ReturnType<DenoMonorepoPublishUtils["getAllModuleBuildNpmTools"]>
@@ -136,12 +137,23 @@ export class DenoMonorepoPublishUtils {
             for (const [importKey, importValue] of Object.entries(imports)) {
                 const importValueString = importValue as string;
                 if (importValueString.startsWith("npm:")) {
-                    const npmPackage = importValueString.substring(
-                        "npm:".length,
-                    );
-                    // Extract package name and version if specified
-                    const [packageName, version] = npmPackage.split("@");
-                    npmDependencies[importKey] = version || "*";
+                    const npmPackage = importValueString.substring("npm:".length);
+        
+                    // Find the last '@' symbol
+                    const lastAtIndex = npmPackage.lastIndexOf('@');
+        
+                    let packageName;
+                    let version;
+        
+                    if (lastAtIndex > 0) {
+                        packageName = npmPackage.substring(0, lastAtIndex);
+                        version = npmPackage.substring(lastAtIndex + 1);
+                    } else {
+                        packageName = npmPackage;
+                        version = undefined;
+                    }
+        
+                    npmDependencies[packageName] = version || "*";
                 }
             }
 
@@ -246,6 +258,12 @@ export class DenoMonorepoPublishUtils {
 
                 await Deno.writeTextFile(buildNpmOptionsPath, optionsCode);
             },
+            waitForLatestVersion: async () => {
+                const packageName = buildNpmOptions.package?.name!;
+                const version = buildNpmOptions.package?.version!;
+
+                await waitForPackageVersion(packageName, version);
+            },
             publishModulePublic: async () => {
                 // Run "deno run -A scripts/build_npm.ts" in the module directory
                 const denoBuildCommand = new Deno.Command("deno", {
@@ -284,6 +302,8 @@ export class DenoMonorepoPublishUtils {
                         }`,
                     );
                 }
+
+
             },
         };
     };

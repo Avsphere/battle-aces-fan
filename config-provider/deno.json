@@ -1,6 +1,6 @@
 {
   "name": "@battle-aces-fan/config-provider",
-  "version": "0.2.16",
+  "version": "0.2.32",
   "exports": "./mod.ts",
   "license": "MIT",
   "imports": {

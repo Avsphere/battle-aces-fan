@@ -14,7 +14,7 @@ export const buildOptions : BuildOptions = {
   },
   "package": {
     "name": "@battle-aces-fan/app-context",
-    "version": "0.2.16",
+    "version": "0.2.32",
     "description": "Yes. This is how I choose to spend my time.",
     "license": "MIT",
     "private": false,
@@ -23,7 +23,7 @@ export const buildOptions : BuildOptions = {
       "url": "git+https://github.com/avsphere/battle-aces-fan.git"
     },
     "dependencies": {
-      "@battle-aces-fan/db": "0.2.22",
+      "@battle-aces-fan/db": "0.2.38",
       "zod": "^3.23.8"
     }
   }

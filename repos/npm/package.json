@@ -1,6 +1,6 @@
 {
   "name": "@battle-aces-fan/repos",
-  "version": "0.2.16",
+  "version": "0.2.32",
   "description": "Yes. This is how I choose to spend my time.",
   "repository": {
     "type": "git",
@@ -21,7 +21,7 @@
   "private": false,
   "dependencies": {
     "zod": "^3.23.8",
-    "@battle-aces-fan/app-context": "0.2.16"
+    "@battle-aces-fan/app-context": "0.2.32"
   },
   "devDependencies": {
     "@types/node": "^20.9.0",

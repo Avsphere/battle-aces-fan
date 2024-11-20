@@ -1,1 +1,1 @@
-export type { BattleAcesFanApp } from './lib/app.ts'
+export { BattleAcesFanApp } from './lib/app.ts'

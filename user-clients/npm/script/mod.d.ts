@@ -12,6 +12,8 @@ export declare const UserApiClient: (options: UserApiClientOptions) => {
         };
     }>;
 } & {
+    "*": import("hono/client").ClientRequest<{}>;
+} & {
     author: import("hono/client").ClientRequest<{
         $post: {
             input: {

@@ -14,7 +14,7 @@ export const buildOptions : BuildOptions = {
   },
   "package": {
     "name": "@battle-aces-fan/db",
-    "version": "0.2.22",
+    "version": "0.2.38",
     "description": "Yes. This is how I choose to spend my time.",
     "license": "MIT",
     "private": false,
@@ -25,8 +25,8 @@ export const buildOptions : BuildOptions = {
     "dependencies": {
       "mongodb": "^6.10.0",
       "zod": "^3.23.8",
-      "@battle-aces-fan/datacontracts": "0.2.16",
-      "@battle-aces-fan/config-provider": "0.2.16"
+      "@battle-aces-fan/datacontracts": "0.2.32",
+      "@battle-aces-fan/config-provider": "0.2.32"
     }
   }
 };

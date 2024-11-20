@@ -1,6 +1,6 @@
 {
   "name": "@battle-aces-fan/server",
-  "version": "0.2.16",
+  "version": "0.2.32",
   "exports": "./mod.ts",
   "imports": {
     "@hono/zod-validator": "npm:@hono/zod-validator@^0.4.1",

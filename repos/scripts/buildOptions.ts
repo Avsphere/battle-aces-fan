@@ -14,7 +14,7 @@ export const buildOptions : BuildOptions = {
   },
   "package": {
     "name": "@battle-aces-fan/repos",
-    "version": "0.2.16",
+    "version": "0.2.32",
     "description": "Yes. This is how I choose to spend my time.",
     "license": "MIT",
     "private": false,
@@ -24,7 +24,7 @@ export const buildOptions : BuildOptions = {
     },
     "dependencies": {
       "zod": "^3.23.8",
-      "@battle-aces-fan/app-context": "0.2.16"
+      "@battle-aces-fan/app-context": "0.2.32"
     }
   }
 };

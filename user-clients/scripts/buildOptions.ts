@@ -14,7 +14,7 @@ export const buildOptions : BuildOptions = {
   },
   "package": {
     "name": "@battle-aces-fan/user-clients",
-    "version": "0.2.16",
+    "version": "0.2.34",
     "description": "Yes. This is how I choose to spend my time.",
     "license": "MIT",
     "private": false,
@@ -26,7 +26,7 @@ export const buildOptions : BuildOptions = {
       "hono": "^4.6.10",
       "@hono/zod-validator": "^0.4.1",
       "zod": "^3.23.8",
-      "@battle-aces-fan/server": "0.2.16"
+      "@battle-aces-fan/server": "0.2.32"
     }
   }
 };

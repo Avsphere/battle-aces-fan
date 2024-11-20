@@ -3,7 +3,7 @@ import { zValidator } from "@hono/zod-validator";
 import { Hono } from "hono";
 import { Repos } from "@battle-aces-fan/repos";
 import { UserRoutes } from "./routes/UserRoutes.ts";
-import { cors } from 'hono/cors';
+import { cors } from "hono/cors";
 
 const AuthorSchema = z.object({
   name: z.string(),
@@ -15,15 +15,16 @@ type Author = z.infer<typeof AuthorSchema>;
 export const BattleAcesFanApp = (repos: Repos) => {
   const userRoutes = UserRoutes(repos);
 
-  const app = new Hono();
-
-  app.use('*', cors({
-    origin: 'http://localhost:3000', // Allow requests from this origin
-    allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowHeaders: ['Content-Type', 'Authorization'],
-  }));
-
-    app.get("/", (c) => {
+  const app = new Hono()
+    .use(
+      "*",
+      cors({
+        origin: "http://localhost:3000", // Allow requests from this origin
+        allowMethods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+        allowHeaders: ["Content-Type", "Authorization"],
+      }),
+    )
+    .get("/", (c) => {
       return c.text("Hello Hono!");
     })
     .post("/author", zValidator("json", AuthorSchema), async (c) => {
@@ -37,9 +38,6 @@ export const BattleAcesFanApp = (repos: Repos) => {
     })
     .route("/users", userRoutes);
 
-
-    
-
   return app;
 };
 
@@ -49,4 +47,3 @@ BattleAcesFanApp.create = () => {
 };
 
 export type BattleAcesFanApp = ReturnType<typeof BattleAcesFanApp>;
-// export const BattleAcesFanRoutes = app;
