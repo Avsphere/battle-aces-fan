@@ -12,7 +12,8 @@
     "dev": "deno run --watch main.ts",
     "start": "deno run -A ./server/main.ts",
     "publish": "deno run -A ./scripts/publishAll.ts",
-    "publish-by-name": "deno run -A ./scripts/publishByName.ts"
+    "publish-by-name": "deno run -A ./scripts/publishByName.ts",
+    "check": "deno fmt && deno lint && deno check ./*.ts"
   },
   "imports": {
     "@deno/dnt": "jsr:@deno/dnt@^0.41.3",
