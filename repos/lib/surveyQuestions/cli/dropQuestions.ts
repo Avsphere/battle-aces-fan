@@ -9,7 +9,7 @@ import type { generateAllQuestions } from "./generateQuestions.ts";
 
 const questions = await repos.surveyQuestions.questions.findAll();
 
-await await repos.surveyQuestions.questions.deleteAll();
+await repos.surveyQuestions.questions.deleteAll();
 console.log(chalk.blueBright(`Dropped all ${questions.length} questions`));
 
 Deno.exit(0);

@@ -75,9 +75,10 @@ Deno.test("BattleAcesFanApp Tests", async (testCtx) => {
     });
 
     const questions = await questionsResponse.json();
-    const answeredQuestion = questions.questions[0];
+    const answeredQuestion = questions.questions.find(q => q.details.tags.length > 0)!
 
-    await client.users.responses[":userId"].$post({
+
+    const r = await client.users.responses["answer-question"][":userId"].$post({
       param: {
         userId: user.id,
       },
@@ -91,9 +92,14 @@ Deno.test("BattleAcesFanApp Tests", async (testCtx) => {
         },
       },
     });
+    assertEquals(r.status, 200);
 
     const usersResponses = await repos.users.findAllResponses(user.id);
+    const foundResponse = usersResponses.find(r => r.data.details.questionId === answeredQuestion._id);
 
+    assertEquals(foundResponse?.data.details.tags[0], answeredQuestion.details.tags[0]);
+
+    const allResponses = await repos.surveyQuestions.responses.findAll()
     const nextQuestionsResponse = await client.users.questions[":userId"].$get({
       param: {
         userId: user.id,
@@ -107,8 +113,6 @@ Deno.test("BattleAcesFanApp Tests", async (testCtx) => {
       nextQuestions.questions.length,
       questions.questions.length - 1,
     );
-
-    console.log("usersResponses", usersResponses);
   });
 
   await appContext.dispose();

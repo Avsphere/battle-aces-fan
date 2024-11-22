@@ -2,6 +2,13 @@
   {
     "kind": "unit_matchup_1v1",
     "firstUnitSlug": "scorpion",
-    "secondUnitSlug": "scorpion"
+    "secondUnitSlug": "scorpion",
+    "tags": []
+  },
+  {
+    "kind": "unit_matchup_1v1",
+    "firstUnitSlug": "scorpion",
+    "secondUnitSlug": "blinkhunter",
+    "tags": []
   }
 ]
