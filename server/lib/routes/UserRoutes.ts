@@ -7,11 +7,12 @@ import type { UsersRepo } from "../../../repos/lib/users/UsersRepo.ts";
 import { SurveyQuestionResponseDetails } from "@battle-aces-fan/datacontracts";
 import { z } from "zod";
 
-const UserSubmitResponseSchema = z.object({
+export const UserSubmitResponseSchema = z.object({
   details: SurveyQuestionResponseDetails.omit({
     userId: true,
   }),
 });
+export type UserSubmitResponseSchema = z.infer<typeof UserSubmitResponseSchema>;
 
 const GetOrCreateUserSchema = z.object({
   userId: z.string().optional(),
