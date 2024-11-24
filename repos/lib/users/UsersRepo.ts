@@ -34,14 +34,17 @@ export class UsersRepo {
     );
 
     // make sure tags user selected are valid
-    const questionTags = question.details.tags;
-    const responseTags = response.details.tags;
+    const questionTags = question.details.tags.map((t) => t.trim().toLocaleLowerCase());
+    const responseTags = response.details.tags.map((t) => t.trim().toLocaleLowerCase());
 
     for (const tag of responseTags) {
       if (!questionTags.includes(tag)) {
         throw new Error(
           `user supplies invalid response tag: ${tag}. Response : ${
-            JSON.stringify(response)
+            JSON.stringify({
+              response,
+              allowedTags: questionTags,
+            })
           }`,
         );
       }

@@ -78,7 +78,7 @@ Deno.test("BattleAcesFanApp Tests", async (testCtx) => {
     const answeredQuestion = questions.questions.find(q => q.details.tags.length > 0)!
 
 
-    const r = await client.users.responses["answer-question"][":userId"].$post({
+    const r = await client.users.responses[":userId"].$post({
       param: {
         userId: user.id,
       },

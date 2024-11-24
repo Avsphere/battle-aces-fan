@@ -47,14 +47,11 @@ export const UserRoutes = (repos: Repos) => {
       },
     )
     .post(
-      "/responses/answer-question/:userId",
+      "/responses/:userId",
       zValidator("json", UserSubmitResponseSchema),
       async (c) => {
-        console.log("HERE WITH RESPONSE")
-
         const userId = c.req.param().userId;
         const response = UserSubmitResponseSchema.parse(await c.req.json());
-
 
         await repos.users.answerSurveyQuestion({
           details: {
