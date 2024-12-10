@@ -4,6 +4,7 @@
 # local env files (followinf dotenv-flow / nextjs convention)
 
 .env.local
+.env.*
 .env.*.local
 
 # just incase
