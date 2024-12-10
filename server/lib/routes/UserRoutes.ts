@@ -31,6 +31,8 @@ export const UserRoutes = (repos: Repos) => {
           });
         }
 
+        console.log('/find-or-create data.userId', data.userId);
+
         const user = await appContext.models.users.findById(data.userId);
         return c.json({
           user: user.data,

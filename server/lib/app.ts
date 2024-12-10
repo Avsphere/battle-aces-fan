@@ -22,7 +22,7 @@ export const BattleAcesFanApp = (repos: Repos) => {
     .use(
       "*",
       cors({
-        origin: "http://localhost:3000", // Allow requests from this origin
+        origin: "http://localhost:5173", // Allow requests from this origin
         allowMethods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
         allowHeaders: ["Content-Type", "Authorization"],
       }),
