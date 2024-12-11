@@ -6,6 +6,7 @@ import { UserRoutes } from "./routes/UserRoutes.ts";
 import { cors } from "hono/cors";
 import { UnitRoutes } from "./routes/UnitRoutes.ts";
 import { TagRoutes } from "./routes/TagRoutes.ts";
+import { logger } from 'hono/logger'
 
 const AuthorSchema = z.object({
   name: z.string(),
@@ -27,6 +28,15 @@ export const BattleAcesFanApp = (repos: Repos) => {
         allowHeaders: ["Content-Type", "Authorization"],
       }),
     )
+    .use(
+      "*",
+      cors({
+        origin: "https://battle-aces-fan", // Allow requests from this origin
+        allowMethods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+        allowHeaders: ["Content-Type", "Authorization"],
+      }),
+    )
+    .use(logger())
     .route("/users", userRoutes)
     .route("/units", unitRoutes)
     .route("/tags", tagRoutes);
