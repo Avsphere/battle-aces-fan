@@ -36,7 +36,7 @@ const runDockerBuildCommand = async (tag: string) => {
 
 const deployToCloudRun = async (imageUri: string) => {
   console.log('Deploying to cloud run:', imageUri);
-  await runCommand(["gcloud", "run", "deploy", config.gcloudServiceName, "--image", imageUri, "--region", "us-west2", "--project", "foxtail-362109"]);
+  await runCommand(["gcloud", "run", "deploy", config.gcloudServiceName, "--image", imageUri, "--region", "us-west1", "--project", "pennyroyal-388621"]);
 };
 
 const buildAndDeploy = async () => {

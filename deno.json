@@ -11,6 +11,7 @@
   "tasks": {
     "dev": "deno run --watch main.ts",
     "start": "deno run -A ./server/main.ts",
+    "release" : "deno run -A ./scripts/release/performRelease.ts",
     "publish": "deno run -A ./scripts/publishAll.ts",
     "publish-by-name": "deno run -A ./scripts/publishByName.ts",
     "check": "deno fmt && deno lint && deno check ./*.ts"
@@ -32,5 +33,6 @@
     "jsx": "precompile",
     "jsxImportSource": "hono/jsx",
     "strict": true
-  }
+  },
+  "nodeModulesDir" : "auto"
 }

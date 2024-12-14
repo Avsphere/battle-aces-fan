@@ -10,8 +10,10 @@
     "@battle-aces-fan/config-provider": "../config-provider/mod.ts",
     "@battle-aces-fan/datacontracts": "../datacontracts/mod.ts",
     "@battle-aces-fan/app-context": "../app-context/mod.ts",
+    "@std/testing": "jsr:@std/testing@^1.0.6",
     "@types/lodash": "npm:@types/lodash@^4.17.13",
     "lodash": "npm:lodash@^4.17.21",
+    "sharp": "npm:sharp@^0.33.5",
     "zod": "npm:zod@^3.23.8"
   }
 }

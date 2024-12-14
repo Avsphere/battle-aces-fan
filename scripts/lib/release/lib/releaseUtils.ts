@@ -64,7 +64,7 @@ const buildDockerImage = async (version : string) => {
 
 const deployToCloudRun = async (imageUri: string) => {
   console.log('Deploying to cloud run: imageUri', imageUri)
-  const command = `gcloud run deploy ${ReleaseConfigProvider.config.gcloudServiceName} --image ${imageUri} --region us-west2`
+  const command = `gcloud run deploy ${ReleaseConfigProvider.config.gcloudServiceName} --image ${imageUri} --region us-west1`
 
   const result = await streamExec(command)
 
