@@ -1,4 +1,4 @@
-type Card = { index: number; imageIds: string[] };
+export type Card = { index: number; imageIds: string[] };
 
 export function createCards(imageIds: string[], cardCount: 55 | 57): Card[] {
   const n = 7;

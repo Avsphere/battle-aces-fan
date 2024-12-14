@@ -1,5 +1,5 @@
 import { Buffer } from "node:buffer";
-import sharp, { OverlayOptions } from "sharp";
+import sharp, { OverlayOptions, Metadata } from "sharp";
 
 interface CircleConfig {
   radius: number;
@@ -16,12 +16,9 @@ interface PlacedImage {
   y: number;
   width: number;
   height: number;
+  fullWidth: number;
+  fullHeight: number;
   angle?: number;
-}
-
-interface MinimalDistanceConfig {
-  min: number;
-  max: number;
 }
 
 interface ImagePlacementConfig {
@@ -32,9 +29,10 @@ interface ImagePlacementConfig {
     min: number;
     max: number;
   };
+  randomOrientationScalar?: number;
 }
 
-interface CircleOptions {
+export interface CircleOptions {
   shouldDrawCircleLine?: boolean;
   imagePlacementConfig?: ImagePlacementConfig;
   shouldPullOuterImagesToEdges?: boolean;
@@ -65,14 +63,25 @@ export const circleGeneration = {
       images.map(i => circleGeneration.loadImage(i.pathToImage))
     );
 
-    const shuffledLoadedImages = loadedImages.sort(() => Math.random() - 0.5);
+    const imagesWithMeta = await Promise.all(
+      loadedImages.map(async (imgBuffer) => {
+        const meta: Metadata = await sharp(imgBuffer).metadata();
+        return {
+          buffer: imgBuffer,
+          originalWidth: meta.width || 100,
+          originalHeight: meta.height || 100
+        };
+      })
+    );
+
+    const shuffledImages = imagesWithMeta.sort(() => Math.random() - 0.5);
 
     let placedImages: PlacedImage[] = [];
     let success = false;
     for (let attempt = 0; attempt < 5000; attempt++) {
       placedImages = [];
       success = circleGeneration.placeImagesRandomly(
-        shuffledLoadedImages,
+        shuffledImages,
         radius,
         placementConfig,
         placedImages,
@@ -100,7 +109,7 @@ export const circleGeneration = {
   },
 
   placeImagesRandomly: (
-    images: Buffer[],
+    images: { buffer: Buffer; originalWidth: number; originalHeight: number }[],
     radius: number,
     placementConfig: ImagePlacementConfig,
     placedImages: PlacedImage[],
@@ -109,8 +118,10 @@ export const circleGeneration = {
     const maxAttempts = 5000;
     const circleCenter = radius;
 
-    for (const img of images) {
+    for (const imgData of images) {
       let placed = false;
+      const { buffer, originalWidth, originalHeight } = imgData;
+
       for (let attempt = 0; attempt < maxAttempts; attempt++) {
         const angle = Math.random() * 2 * Math.PI;
         const chosenSize = Math.floor(
@@ -118,17 +129,35 @@ export const circleGeneration = {
           ((Math.random() + Math.random()) / 2) *
           (placementConfig.maxImageSize - placementConfig.minImageSize)
         );
+
+        const scaleFactor = chosenSize / Math.min(originalWidth, originalHeight);
+        const finalWidth = Math.round(originalWidth * scaleFactor);
+        const finalHeight = Math.round(originalHeight * scaleFactor);
+
+        const boundingBoxSize = chosenSize;
+
         const r = Math.random() * (radius - chosenSize);
-        const x = Math.floor(circleCenter + r * Math.cos(angle) - chosenSize / 2);
-        const y = Math.floor(circleCenter + r * Math.sin(angle) - chosenSize / 2);
+        const x = Math.floor(circleCenter + r * Math.cos(angle) - finalWidth / 2);
+        const y = Math.floor(circleCenter + r * Math.sin(angle) - finalHeight / 2);
 
         if (
-          circleGeneration.insideCircle(x, y, chosenSize, chosenSize, circleCenter, radius, 0) &&
-          !circleGeneration.overlaps(x, y, chosenSize, chosenSize, placedImages, minimalDistance)
+          circleGeneration.insideCircle(x, y, finalWidth, finalHeight, circleCenter, radius, 0) &&
+          !circleGeneration.overlaps(x, y, boundingBoxSize, boundingBoxSize, placedImages, minimalDistance)
         ) {
-          const pImg: PlacedImage = { buffer: img, x, y, width: chosenSize, height: chosenSize };
-          if (placementConfig.useRandomImageOrientation) {
-            pImg.angle = Math.random() * 360;
+          const pImg: PlacedImage = {
+            buffer: buffer,
+            x,
+            y,
+            width: boundingBoxSize,
+            height: boundingBoxSize,
+            fullWidth: finalWidth,
+            fullHeight: finalHeight
+          };
+          const scalar = placementConfig.randomOrientationScalar;
+          if (typeof scalar === 'number') {
+            pImg.angle = Math.random() * 180 * scalar;
+          } else if (placementConfig.useRandomImageOrientation) {
+            pImg.angle = Math.random() * 180;
           }
           placedImages.push(pImg);
           placed = true;
@@ -149,7 +178,6 @@ export const circleGeneration = {
     radius: number,
     angle: number = 0
   ): boolean => {
-    // Rotate corners if angle is given
     const cx = x + w / 2;
     const cy = y + h / 2;
     const rad = angle * Math.PI / 180;
@@ -186,10 +214,9 @@ export const circleGeneration = {
   },
 
   selectOutermostImages: (placedImages: PlacedImage[], radius: number): PlacedImage[] => {
-    // Consider outermost images as those whose center is beyond half the radius
     return placedImages.filter(p => {
-      const centerX = p.x + p.width / 2;
-      const centerY = p.y + p.height / 2;
+      const centerX = p.x + p.fullWidth / 2;
+      const centerY = p.y + p.fullHeight / 2;
       const dx = centerX - radius;
       const dy = centerY - radius;
       const dist = Math.sqrt(dx * dx + dy * dy);
@@ -205,8 +232,8 @@ export const circleGeneration = {
   ) => {
     const center = radius;
     for (const img of outermostImages) {
-      const imgCenterX = img.x + img.width / 2;
-      const imgCenterY = img.y + img.height / 2;
+      const imgCenterX = img.x + img.fullWidth / 2;
+      const imgCenterY = img.y + img.fullHeight / 2;
       const dx = imgCenterX - center;
       const dy = imgCenterY - center;
       const dist = Math.sqrt(dx * dx + dy * dy);
@@ -214,7 +241,6 @@ export const circleGeneration = {
       const dirX = dx / dist;
       const dirY = dy / dist;
 
-      // Find how far we can push outward until just before leaving the circle
       let low = 0;
       let high = radius - dist;
       for (let i = 0; i < 50; i++) {
@@ -222,10 +248,10 @@ export const circleGeneration = {
         const testX = img.x + mid * dirX;
         const testY = img.y + mid * dirY;
         const angle = img.angle || 0;
-        if (circleGeneration.insideCircle(testX, testY, img.width, img.height, center, radius, angle)) {
-          low = mid;  // can push further
+        if (circleGeneration.insideCircle(testX, testY, img.fullWidth, img.fullHeight, center, radius, angle)) {
+          low = mid;
         } else {
-          high = mid; // too far
+          high = mid;
         }
       }
 
@@ -264,7 +290,7 @@ export const circleGeneration = {
     const imageComposites = await Promise.all(
       placedImages.map(async (p) => {
         const img = sharp(p.buffer)
-          .resize(p.width, p.height)
+          .resize(p.fullWidth, p.fullHeight)
           .rotate(p.angle || 0, { background: { r: 0, g: 0, b: 0, alpha: 0 } })
           .png({ quality: 100 });
         const imgBuffer = await img.png().toBuffer();
